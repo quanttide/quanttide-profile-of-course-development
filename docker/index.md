@@ -22,3 +22,4 @@
 | 课时 | 文件 | 内容 |
 |------|------|------|
 | 1 | [1_image-vs-container.md](1_image-vs-container.md) | 镜像 vs 容器，解决"有镜像为什么还要 docker run"的困惑 |
+| 2 | [2_multi-container-compose.md](2_multi-container-compose.md) | 多容器协作，理解 Compose 如何编排多个镜像→容器 |
