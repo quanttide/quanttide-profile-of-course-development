@@ -22,5 +22,5 @@
 
 | 课时 | 文件 | 内容 |
 |------|------|------|
-| 1 | [1_分布式与本地三区操作.md](1_分布式与本地三区操作.md) | 分布式 vs 集中式，三区操作，解决核心困惑 |
-| 2 | [2_分支与协作流程.md](2_分支与协作流程.md) | 分支概念，两种分支模式，主干分支与自动化 |
+| 1 | [1_distributed-vs-centralized.md](1_distributed-vs-centralized.md) | 分布式 vs 集中式，三区操作，解决核心困惑 |
+| 2 | [2_branching-and-collaboration.md](2_branching-and-collaboration.md) | 分支概念，两种分支模式，主干分支与自动化 |
