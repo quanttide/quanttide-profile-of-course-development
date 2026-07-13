@@ -2,7 +2,7 @@
   "id": "vibe-coding-lesson1",
   "name": "develop-environment-setup",
   "title": "开发环境搭建",
-  "description": "氛围编程的第一个课时。包含 Zed 编辑器安装、DeepSeek 账号注册、API 密钥获取与配置，完成 AI 辅助编程的本地环境搭建。",
+  "description": "氛围编程的第一个课时。包含 Zed 编辑器安装与初始化、DeepSeek 账号注册与密钥获取，以及 Zed Agent 配置。",
   "duration": 30,
   "status": "draft",
   "startSceneId": "vibe-s1",
@@ -25,6 +25,23 @@
     },
     {
       "id": "vibe-s2",
+      "name": "zed-init",
+      "lessonId": "vibe-coding-lesson1",
+      "title": "Zed 的初始化配置",
+      "videoUrl": "vibe-coding/lesson1/zed-init.mp4",
+      "steps": [
+        { "order": 1, "content": "打开 Zed 进入欢迎页面" },
+        { "order": 2, "content": "根据引导选择主题配色" },
+        { "order": 3, "content": "配置快捷键布局（Vim / VS Code / 默认）" },
+        { "order": 4, "content": "安装推荐的插件或语言扩展" }
+      ],
+      "verifyTip": "Zed 编辑器能正常编辑和预览文件即表示初始化完成",
+      "choices": [
+        { "label": "继续", "targetSceneId": "vibe-s5" }
+      ]
+    },
+    {
+      "id": "vibe-s3",
       "name": "register-deepseek",
       "lessonId": "vibe-coding-lesson1",
       "title": "注册 DeepSeek 账号",
@@ -36,11 +53,11 @@
       ],
       "verifyTip": "登录后能正常访问 API 管理页面即表示注册成功",
       "choices": [
-        { "label": "继续", "targetSceneId": "vibe-s3" }
+        { "label": "继续", "targetSceneId": "vibe-s4" }
       ]
     },
     {
-      "id": "vibe-s3",
+      "id": "vibe-s4",
       "name": "get-api-key",
       "lessonId": "vibe-coding-lesson1",
       "title": "获取 DeepSeek 密钥",
@@ -52,11 +69,11 @@
       ],
       "verifyTip": "密钥已复制到剪贴板，可在下一步配置中使用",
       "choices": [
-        { "label": "继续", "targetSceneId": "vibe-s4" }
+        { "label": "继续", "targetSceneId": "vibe-s5" }
       ]
     },
     {
-      "id": "vibe-s4",
+      "id": "vibe-s5",
       "name": "configure-zed",
       "lessonId": "vibe-coding-lesson1",
       "title": "Zed Agent 配置 DeepSeek 密钥",
