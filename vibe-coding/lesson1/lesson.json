@@ -4,5 +4,37 @@
   "description": "氛围编程的第一个课时。包含 Zed 编辑器安装、DeepSeek 账号注册、API 密钥获取与配置，完成 AI 辅助编程的本地环境搭建。",
   "duration": 30,
   "status": "draft",
-  "startSceneId": "vibe-s1"
+  "startSceneId": "vibe-s1",
+  "scenes": [
+    {
+      "id": "vibe-s1",
+      "lessonId": "vibe-coding-lesson1",
+      "videoUrl": "vibe-coding/lesson1/zed-install.mp4",
+      "choices": [
+        { "label": "继续", "targetSceneId": "vibe-s2" }
+      ]
+    },
+    {
+      "id": "vibe-s2",
+      "lessonId": "vibe-coding-lesson1",
+      "videoUrl": "vibe-coding/lesson1/register-deepseek.mp4",
+      "choices": [
+        { "label": "继续", "targetSceneId": "vibe-s3" }
+      ]
+    },
+    {
+      "id": "vibe-s3",
+      "lessonId": "vibe-coding-lesson1",
+      "videoUrl": "vibe-coding/lesson1/get-api-key.mp4",
+      "choices": [
+        { "label": "继续", "targetSceneId": "vibe-s4" }
+      ]
+    },
+    {
+      "id": "vibe-s4",
+      "lessonId": "vibe-coding-lesson1",
+      "videoUrl": "vibe-coding/lesson1/configure-zed.mp4",
+      "choices": []
+    }
+  ]
 }
