@@ -1,11 +1,11 @@
-# 场景4：Zed Agent 配置 DeepSeek 密钥
+# 场景3：Zed Agent 配置 DeepSeek 密钥
 
 对应课时：[课时1：开发环境搭建](index.md)
 
 ## 前置依赖
 
-- 已完成 [场景1：Zed 的安装](sense1.md)
-- 已完成 [场景3：获取 DeepSeek 密钥](sense3.md)
+- 已完成 [场景1：Zed 的安装与初始化](sense1.md)
+- 已完成 [场景2：注册并获取 DeepSeek 密钥](sense2.md)
 - 已复制 DeepSeek API 密钥到剪贴板
 
 ## 操作步骤
