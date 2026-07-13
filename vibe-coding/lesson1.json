@@ -9,7 +9,14 @@
     {
       "id": "vibe-s1",
       "lessonId": "vibe-coding-lesson1",
+      "title": "Zed 的安装",
       "videoUrl": "vibe-coding/lesson1/zed-install.mp4",
+      "steps": [
+        { "order": 1, "content": "访问 zed.dev 下载 Zed 编辑器" },
+        { "order": 2, "content": "安装并打开 Zed" },
+        { "order": 3, "content": "根据引导完成初始配置" }
+      ],
+      "verifyTip": "打开 Zed 后能正常编辑文件即表示安装成功",
       "choices": [
         { "label": "继续", "targetSceneId": "vibe-s2" }
       ]
@@ -17,7 +24,14 @@
     {
       "id": "vibe-s2",
       "lessonId": "vibe-coding-lesson1",
+      "title": "注册 DeepSeek 账号",
       "videoUrl": "vibe-coding/lesson1/register-deepseek.mp4",
+      "steps": [
+        { "order": 1, "content": "访问 DeepSeek 官网" },
+        { "order": 2, "content": "点击注册，填写必要信息" },
+        { "order": 3, "content": "完成邮箱/手机验证并登录" }
+      ],
+      "verifyTip": "登录后能正常访问 API 管理页面即表示注册成功",
       "choices": [
         { "label": "继续", "targetSceneId": "vibe-s3" }
       ]
@@ -25,7 +39,14 @@
     {
       "id": "vibe-s3",
       "lessonId": "vibe-coding-lesson1",
+      "title": "获取 DeepSeek 密钥",
       "videoUrl": "vibe-coding/lesson1/get-api-key.mp4",
+      "steps": [
+        { "order": 1, "content": "登录 DeepSeek 后进入 API 管理页面" },
+        { "order": 2, "content": "点击创建新密钥" },
+        { "order": 3, "content": "复制生成的 API 密钥到剪贴板" }
+      ],
+      "verifyTip": "密钥已复制到剪贴板，可在下一步配置中使用",
       "choices": [
         { "label": "继续", "targetSceneId": "vibe-s4" }
       ]
@@ -33,7 +54,17 @@
     {
       "id": "vibe-s4",
       "lessonId": "vibe-coding-lesson1",
+      "title": "Zed Agent 配置 DeepSeek 密钥",
       "videoUrl": "vibe-coding/lesson1/configure-zed.mp4",
+      "steps": [
+        { "order": 1, "content": "在 Zed 中点击左上角星星图标，打开 Zed Agent 面板" },
+        { "order": 2, "content": "点击 Zed Agent 右下角倒数第二个按钮「Select a model」" },
+        { "order": 3, "content": "点击 Configure，进入模型配置页面" },
+        { "order": 4, "content": "点击 LLM Provider，进入 API 密钥配置页面" },
+        { "order": 5, "content": "下拉列表找到 DeepSeek，填入之前复制的 API 密钥" },
+        { "order": 6, "content": "关闭配置页面，回到 Zed Agent，输入一条消息尝试对话" }
+      ],
+      "verifyTip": "在 Zed Agent 中输入「hello」或「你好」，若 DeepSeek 正常返回回复即表示配置完成",
       "choices": []
     }
   ]
