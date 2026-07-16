@@ -1,0 +1,57 @@
+{
+  "description": "完成Zed编辑器安装、初始化，DeepSeek账号注册与密钥获取，以及Zed Agent配置，为AI辅助编程打下基础。",
+  "duration_minutes": 45,
+  "scenes": [
+    {
+      "description": "从Zed官网下载对应操作系统的安装包，完成Zed编辑器的安装。例如，在Windows系统下载Zed安装包时，可能遇到下载缓慢，可以使用国内镜像站点（如镜像站URL）加速下载，或检查网络连接后重试。",
+      "duration_minutes": 8,
+      "exception": {
+        "description": "若下载过程中网络中断导致文件不完整，需重新下载；若安装时提示系统不兼容，可查阅Zed官网的系统要求文档，或更新操作系统版本后重试。例如，某用户在macOS上安装时因未开启“允许从任何来源”导致安装失败，需前往系统设置中的安全性与隐私手动允许。",
+        "duration_minutes": 4,
+        "title": "下载失败或安装包损坏"
+      },
+      "title": "Zed 编辑器安装"
+    },
+    {
+      "description": "启动Zed编辑器，进行初次配置，如设置主题、字体等基本选项。例如，选择一个护眼主题（如One Dark Pro），将字体设置为“JetBrains Mono”以提升代码可读性，同时调整行高和字号。",
+      "duration_minutes": 5,
+      "exception": {
+        "description": "若Zed启动后设置界面卡顿，可尝试重启编辑器；若修改的主题不生效，检查是否保存了配置（Zed通常自动保存）。例如，有用户反馈修改字体后未立即反映，需关闭并重新打开编辑器文件才能看到效果。",
+        "duration_minutes": 3,
+        "title": "配置界面无响应或选项不生效"
+      },
+      "title": "Zed 编辑器初始化"
+    },
+    {
+      "description": "访问DeepSeek官网，注册个人账号，填写必要信息（如邮箱、密码）。例如，推荐使用Gmail或QQ邮箱，并确保邮箱能正常接收验证码。注册后需要验证邮箱才能登录。",
+      "duration_minutes": 7,
+      "exception": {
+        "description": "若长时间未收到验证码，检查垃圾邮件箱；若邮箱已被注册，尝试“忘记密码”重置账号。例如，某学员使用163邮箱时因邮件过滤导致验证码被拦截，需在邮箱设置中将DeepSeek域名加入白名单。",
+        "duration_minutes": 3,
+        "title": "邮箱验证码未收到或注册失败"
+      },
+      "title": "DeepSeek 账号注册"
+    },
+    {
+      "description": "登录DeepSeek账号，在API管理页面生成并获取API密钥。例如，点击“创建新密钥”，复制生成的字符串（注意密钥仅显示一次，需立即保存到本地）。",
+      "duration_minutes": 3,
+      "exception": {
+        "description": "若点击创建后无反应，刷新页面重试；若复制时手滑导致密钥丢失，可删除原密钥并重新生成。注意：密钥以“sk-”开头，请勿泄露给他人。例如，有用户误将密钥粘贴到公开聊天中，需立即在API管理页面撤销并生成新密钥。",
+        "duration_minutes": 2,
+        "title": "密钥创建失败或无法复制"
+      },
+      "title": "DeepSeek 密钥获取"
+    },
+    {
+      "description": "在Zed编辑器中配置Agent功能，输入DeepSeek的API密钥，启用AI助手。例如，打开Zed命令面板（Ctrl+Shift+P），搜索“Agent: Open Settings”，在配置文件中粘贴密钥，设置模型为“deepseek-chat”。",
+      "duration_minutes": 5,
+      "exception": {
+        "description": "若配置后Agent提示“API key invalid”，检查密钥是否完整且无多余空格；若Zed版本过低，需更新到支持Agent的最新版本。例如，某用户误在密钥前后加了引号导致验证失败，移除引号后恢复正常。",
+        "duration_minutes": 5,
+        "title": "密钥验证失败或Agent无法启动"
+      },
+      "title": "Zed Agent 配置"
+    }
+  ],
+  "title": "开发环境搭建"
+}
