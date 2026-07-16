@@ -1,0 +1,37 @@
+{
+  "description": "当Zed编辑器官网无法访问时，按顺序执行以下步骤进行排查与安装，涵盖网络检查、等待重试、使用代理/镜像、以及通过包管理器安装。",
+  "duration_minutes": 12,
+  "steps": [
+    {
+      "description": "首先确认本地网络是否正常，尝试访问其他知名网站（如百度、Google）。如果其他网站可以访问，则可能是Zed官网暂时不可用。可尝试刷新页面或使用ping命令测试官网（ping zed.dev）。",
+      "duration_minutes": 1,
+      "title": "检查网络连接与官网状态"
+    },
+    {
+      "description": "如果确认是官网临时维护或网络波动，等待1-2分钟后再次尝试访问。多次重试时建议间隔至少30秒，避免频繁请求加重服务器负载。",
+      "duration_minutes": 2,
+      "title": "等待并重试访问"
+    },
+    {
+      "description": "如果地区限制导致无法访问，可开启系统级别代理（如VPN、Shadowsocks），或尝试通过GitHub镜像（如ghproxy.com）下载Zed安装包。对于macOS用户，也可直接使用Homebrew安装，该方式不依赖官网下载页面。",
+      "duration_minutes": 3,
+      "title": "启用代理或使用镜像源"
+    },
+    {
+      "description": "在macOS终端中执行命令：brew install --cask zed。Homebrew会自动下载并安装最新版Zed，无需访问官网主页。若尚未安装Homebrew，需先执行官方安装脚本。",
+      "duration_minutes": 3,
+      "title": "通过Homebrew安装（macOS）"
+    },
+    {
+      "description": "在Windows PowerShell或命令提示符中执行命令：winget install zed。winget会从微软应用商店或官方源获取安装包，避免直接访问Zed官网。",
+      "duration_minutes": 2,
+      "title": "通过winget安装（Windows）"
+    },
+    {
+      "description": "安装完成后，在终端输入zed --version（macOS/Linux）或在开始菜单中搜索Zed（Windows）。若成功显示版本号或启动编辑器，则表明安装完成。若失败，尝试重启终端或检查系统变量。",
+      "duration_minutes": 1,
+      "title": "验证安装结果"
+    }
+  ],
+  "title": "Zed官网无法访问处理流程"
+}
