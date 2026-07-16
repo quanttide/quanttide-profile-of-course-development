@@ -1,0 +1,37 @@
+{
+  "description": "针对 Zed 版本低于 0.15 时 Agent 配置界面与教程截图不一致的情况，通过升级到最新版并重新配置来解决问题。",
+  "duration_minutes": 15,
+  "steps": [
+    {
+      "description": "打开 Zed 编辑器，点击菜单栏「Zed」→「About Zed」，查看版本号。若版本低于 0.15（例如 0.14.x），则进入下一步升级流程。",
+      "duration_minutes": 1,
+      "title": "检查 Zed 版本"
+    },
+    {
+      "description": "根据操作系统执行升级命令：macOS 用户运行 `brew upgrade zed`；Windows/Linux 用户从 zed.dev 下载最新安装包覆盖安装。等待升级完成（约 2 分钟）。",
+      "duration_minutes": 3,
+      "title": "升级 Zed 到最新版"
+    },
+    {
+      "description": "重启 Zed，再次通过「About Zed」确认版本号已更新至最新（如 0.15.x 或更高）。若版本仍为旧版，检查网络或重复升级步骤。",
+      "duration_minutes": 1,
+      "title": "验证升级结果"
+    },
+    {
+      "description": "在 Zed 左侧面板找到 Agent 图标（机器人头像），点击进入。若出现「Select a model」按钮，选择所需模型（如 Claude Sonnet 或 GPT-4），然后输入 API Key。若界面无此按钮，可手动编辑 `~/.config/zed/settings.json`，添加 `\"telemetry\": { \"api_key\": \"sk-xxx\" }` 等字段。",
+      "duration_minutes": 5,
+      "title": "按照新版界面配置 Agent"
+    },
+    {
+      "description": "在 Agent 面板输入框发送一条测试消息（如「Hello」），观察是否收到正常回复。如果回复出现错误，检查 API Key 是否有效或网络连接，并参照原始资料中的手动配置方法调整 settings.json。",
+      "duration_minutes": 3,
+      "title": "测试 Agent 功能"
+    },
+    {
+      "description": "确认 Agent 能连续响应三次以上无误，说明配置成功。记录本次操作步骤，作为后续课程案例参考。",
+      "duration_minutes": 2,
+      "title": "确认配置完成"
+    }
+  ],
+  "title": "处理 Zed 版本过旧导致的界面不匹配问题"
+}
