@@ -1,0 +1,22 @@
+{
+  "description": "发布流程第五步：在 GitHub 上创建 Release，附上 CHANGELOG 内容。",
+  "duration_minutes": 15,
+  "steps": [
+    {
+      "description": "从项目的 CHANGELOG.md 文件中定位当前版本（如 v1.2.3）对应的完整更新日志条目，复制其文本内容。确认版本号与 Git tag 一致。",
+      "duration_minutes": 5,
+      "title": "准备版本号和 CHANGELOG 条目"
+    },
+    {
+      "description": "在终端中运行命令：gh release create vX.Y.Z --title vX.Y.Z --notes \"<复制的 CHANGELOG 条目>\"，将 vX.Y.Z 替换为实际版本号，并将 CHANGELOG 内容粘贴到 --notes 参数中。例如：gh release create v1.2.3 --title v1.2.3 --notes \"## v1.2.3\\n\\n### Added\\n- 新增功能 A\\n\\n### Fixed\\n- 修复问题 B\"",
+      "duration_minutes": 5,
+      "title": "执行 gh release create 命令"
+    },
+    {
+      "description": "检查命令输出是否提示 Release 创建成功，然后打开 GitHub 仓库的 Releases 页面，确认新 Release 已列出，且正文内容与 CHANGELOG 条目一致。若因 tag 已存在但 Release 缺失，可使用相同命令补建（--notes 参数覆盖已有内容）。",
+      "duration_minutes": 5,
+      "title": "验证 Release 创建结果"
+    }
+  ],
+  "title": "创建 GitHub Release"
+}
