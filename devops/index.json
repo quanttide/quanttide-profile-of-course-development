@@ -1,0 +1,492 @@
+{
+  "courses": [
+    {
+      "description": "通过12节课循序渐进地掌握qtcloud-devops CLI的安装、命令结构、代码管理、构建测试、计划契约、发布流程及综合审计，重点解决初学者‘为何发布前必须审计’的核心困惑。",
+      "phases": [
+        {
+          "description": "安装工具、理解嵌套子命令结构，为后续操作打下基础。",
+          "lessons": [
+            {
+              "description": "能下载/编译qtcloud-devops，成功运行 --help 查看命令大纲，理解DevOps生命周期阶段（build→test→release）。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "展示典型场景：学员直接运行 release publish 失败，反思为何缺少 release audit 步骤。引出工具设计理念——门禁前置。",
+                  "duration_minutes": 10,
+                  "title": "课程导引：一个初学者的困惑",
+                  "type": "lecture"
+                },
+                {
+                  "description": "演示通过cargo安装、从源码编译、验证版本。",
+                  "duration_minutes": 10,
+                  "title": "获取与安装",
+                  "type": "demo"
+                },
+                {
+                  "description": "解析 --help 输出中的 build/test/release 阶段及 cross-stage 命令，建立整体认知。",
+                  "duration_minutes": 15,
+                  "title": "命令大纲解读",
+                  "type": "lecture"
+                },
+                {
+                  "description": "学员运行 qtcloud-devops --help 并截图；尝试 help 命令查看 stage 分组。",
+                  "duration_minutes": 8,
+                  "title": "快速上手体验",
+                  "type": "exercise"
+                },
+                {
+                  "description": "总结 CLI 分层结构，强调 release publish 之前需完成审计。",
+                  "duration_minutes": 2,
+                  "title": "本章回顾与答疑",
+                  "type": "review"
+                }
+              ],
+              "title": "CLI工具概览与安装"
+            },
+            {
+              "description": "能解析 Cli 结构中的 Parser/Subcommand 模式，理解子命令嵌套规则，并会使用 status/audit 等通用模式。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "以代码中 #[derive(Parser)] 为例，讲解 Cli 与 Commands 枚举的关系。",
+                  "duration_minutes": 10,
+                  "title": "Rust CLI框架简介",
+                  "type": "lecture"
+                },
+                {
+                  "description": "现场运行 tree 状展示子命令（如 code status、code audit），并解释每个命令的参数。",
+                  "duration_minutes": 10,
+                  "title": "子命令嵌套演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "分析 build、test、plan 等子命令都包含的 status/audit/clean 模式，说明其含义。",
+                  "duration_minutes": 10,
+                  "title": "通用模式：status/audit/clean",
+                  "type": "lecture"
+                },
+                {
+                  "description": "学员根据帮助文档找到 release publish 的正确用法，并列出其所有选项。",
+                  "duration_minutes": 10,
+                  "title": "导航练习",
+                  "type": "exercise"
+                },
+                {
+                  "description": "讨论为什么 CLI 设计为多层嵌套，以及与初学者直观理解的差异。",
+                  "duration_minutes": 5,
+                  "title": "小结与反思",
+                  "type": "discussion"
+                }
+              ],
+              "title": "命令结构与子命令导航"
+            }
+          ],
+          "title": "认识CLI与开发环境"
+        },
+        {
+          "description": "掌握组件同步状态查看与代码审计，理解 Git 子模块在DevOps中的作用。",
+          "lessons": [
+            {
+              "description": "能使用 code status 查看组件同步状态，解释 ahead/behind 含义；使用 code audit 扫描TODO/FIXME密度。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "介绍 qtcloud-devops 中的 code 子命令用于管理 Git 子模块同步，强调其在多仓库DevOps中的重要性。",
+                  "duration_minutes": 10,
+                  "title": "代码管理背景",
+                  "type": "lecture"
+                },
+                {
+                  "description": "在包含子模块的仓库中运行 code status，查看 pending 组件，解释 ahead/behind 信息。",
+                  "duration_minutes": 10,
+                  "title": "code status 演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "运行 code audit --json 输出，展示 JSON 格式化输出如何被 plan 命令消费。",
+                  "duration_minutes": 10,
+                  "title": "code audit 演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员在自己的模拟仓库中执行 code status 和 code audit，理解输出结果。",
+                  "duration_minutes": 10,
+                  "title": "动手练习：同步与审计",
+                  "type": "exercise"
+                },
+                {
+                  "description": "选择题：关于组件同步状态的正确理解。",
+                  "duration_minutes": 5,
+                  "title": "本章测验",
+                  "type": "quiz"
+                }
+              ],
+              "title": "组件同步状态查看与审计"
+            }
+          ],
+          "title": "代码管理与同步"
+        },
+        {
+          "description": "学会管理构建产物和测试状态，掌握质量审计门禁。",
+          "lessons": [
+            {
+              "description": "能运行 build status 查看构建产物位置，使用 build clean 清理，通过 build audit 检查编译器配置和CI工作流。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "讲解 build status/clean/audit 各自用途，强调 clean 对CI环境的重要性。",
+                  "duration_minutes": 10,
+                  "title": "构建子命令概览",
+                  "type": "lecture"
+                },
+                {
+                  "description": "运行 build audit，展示如何检查 target/ 目录、Cargo.toml 配置一致性。",
+                  "duration_minutes": 10,
+                  "title": "构建审计演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员在本地运行 build clean，然后重新构建，观察效果。",
+                  "duration_minutes": 10,
+                  "title": "清理与验证",
+                  "type": "exercise"
+                },
+                {
+                  "description": "分析可能的 audit 失败项，如缺少 CI 工作流文件。",
+                  "duration_minutes": 10,
+                  "title": "讨论：构建审计结果解读",
+                  "type": "discussion"
+                },
+                {
+                  "description": "总结构建阶段常用命令和审计要点。",
+                  "duration_minutes": 5,
+                  "title": "本节回顾",
+                  "type": "review"
+                }
+              ],
+              "title": "构建状态、清理与审计"
+            },
+            {
+              "description": "能使用 test status 查看覆盖率，通过 test audit 进行质量门禁检查，理解 all 和 verbose 参数。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "介绍 test status、clean、audit 的区别，强调 audit 的 --all 和 --verbose 作用。",
+                  "duration_minutes": 10,
+                  "title": "测试子命令结构",
+                  "type": "lecture"
+                },
+                {
+                  "description": "运行 test audit --verbose，展示每个未覆盖函数详情。",
+                  "duration_minutes": 10,
+                  "title": "测试审计演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员在模拟项目中故意降低覆盖率，运行 audit 观察失败情况。",
+                  "duration_minutes": 10,
+                  "title": "实操练习：检查门禁",
+                  "type": "exercise"
+                },
+                {
+                  "description": "引出为何 release audit 之前需要确保 test audit 通过。",
+                  "duration_minutes": 10,
+                  "title": "讨论：测试门禁与发布关系",
+                  "type": "discussion"
+                },
+                {
+                  "description": "选择题：test audit 的 --all 参数含义。",
+                  "duration_minutes": 5,
+                  "title": "章节小测",
+                  "type": "quiz"
+                }
+              ],
+              "title": "测试状态与质量审计"
+            }
+          ],
+          "title": "构建与测试"
+        },
+        {
+          "description": "学会维护 ROADMAP.md 和 TODO.md，理解契约配置对发布的作用。",
+          "lessons": [
+            {
+              "description": "能使用 plan status/clean/doctor 管理 scope 进度，理解 TODO 与 ROADMAP 的关联。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "讲解 plan 命令集：status查看、clean清理已完成、doctor修复格式、audit关联分析。",
+                  "duration_minutes": 10,
+                  "title": "规划子命令概览",
+                  "type": "lecture"
+                },
+                {
+                  "description": "在含 ROADMAP.md 的目录运行 plan status 和 plan doctor，展示格式转换效果。",
+                  "duration_minutes": 10,
+                  "title": "plan status 和 plan doctor 演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "演示 pipe code audit --json | plan todo-from-audit 的链式用法。",
+                  "duration_minutes": 10,
+                  "title": "从审计更新规划",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员执行 plan clean 并观察 git commit 自动生成。",
+                  "duration_minutes": 10,
+                  "title": "实践：清理与提交",
+                  "type": "exercise"
+                },
+                {
+                  "description": "强调规划进度是发布审计的一部分（检查CHANGELOG是否更新）。",
+                  "duration_minutes": 5,
+                  "title": "回顾：规划与发布的联系",
+                  "type": "review"
+                }
+              ],
+              "title": "规划管理与ROADMAP操作"
+            },
+            {
+              "description": "能运行 contract status 查看契约配置，理解契约对 test audit 和 release audit 的影响。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "解释契约（contract）文件如何定义 scope、测试门禁阈值等，是跨阶段配置。",
+                  "duration_minutes": 10,
+                  "title": "契约概念引入",
+                  "type": "lecture"
+                },
+                {
+                  "description": "运行 contract status 显示当前加载的契约内容。",
+                  "duration_minutes": 10,
+                  "title": "contract status 演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "解析代码中 qtcloud_devops_cli::contract::load 的调用位置，说明其在 test status 和 audit 中的使用。",
+                  "duration_minutes": 10,
+                  "title": "看代码理解加载逻辑",
+                  "type": "lecture"
+                },
+                {
+                  "description": "学员尝试修改契约阈值，重新运行 test audit 观察变化。",
+                  "duration_minutes": 10,
+                  "title": "练习：修改契约并观察效果",
+                  "type": "exercise"
+                },
+                {
+                  "description": "讨论为何 release audit 需要参考契约中的版本格式等。",
+                  "duration_minutes": 5,
+                  "title": "讨论：契约对发布流程的约束",
+                  "type": "discussion"
+                }
+              ],
+              "title": "契约配置与状态查看"
+            }
+          ],
+          "title": "计划与契约管理"
+        },
+        {
+          "description": "深度剖析发布流程，解决初学者‘为什么必须先审计’的困惑，学会正确的发布操作与故障处理。",
+          "lessons": [
+            {
+              "description": "能使用 release audit 对版本号、CHANGELOG、标签等进行全面检查，理解审计失败项的含义。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "通过失败案例（缺少CHANGELOG、标签冲突）引出审计的必要性，讲解工具的设计哲学——门禁前置。",
+                  "duration_minutes": 10,
+                  "title": "回到困惑：为何需要 release audit",
+                  "type": "lecture"
+                },
+                {
+                  "description": "介绍 --version, --scope 参数，以及审计输出的 ✅/❌ 解读。",
+                  "duration_minutes": 10,
+                  "title": "release audit 选项详解",
+                  "type": "lecture"
+                },
+                {
+                  "description": "在有问题的仓库中运行 audit，并一步步修复（如更新CHANGELOG、修正版本号）。",
+                  "duration_minutes": 10,
+                  "title": "审计失败模拟与修复",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员在多个模拟场景中运行 audit，记录所有失败项并尝试修复。",
+                  "duration_minutes": 10,
+                  "title": "分组练习：审计并修复",
+                  "type": "exercise"
+                },
+                {
+                  "description": "强调 release audit 是 publish 的必备前置步骤。",
+                  "duration_minutes": 5,
+                  "title": "总结：审计通过是发布的前提",
+                  "type": "review"
+                }
+              ],
+              "title": "发布审计预检"
+            },
+            {
+              "description": "能安全地执行 release publish，理解 --dry-run、--yes、--force 的作用，并监控发布状态。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "回顾代码中 publish 的逻辑：先 status → 校验 → 创建tag → 推送 → GitHub Release，并调用 status 确认。",
+                  "duration_minutes": 10,
+                  "title": "发布流程全景",
+                  "type": "lecture"
+                },
+                {
+                  "description": "运行 release publish --dry-run --version v1.0.0，观察输出而不实际执行。",
+                  "duration_minutes": 10,
+                  "title": "dry-run 预览演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "使用 --yes 跳过确认，或交互式确认；展示 force 用于覆盖已有标签。",
+                  "duration_minutes": 10,
+                  "title": "安全发布与确认",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员在沙箱仓库中执行先 audit 再 publish，验证最终 status。",
+                  "duration_minutes": 10,
+                  "title": "实践：完整发布流程",
+                  "type": "exercise"
+                },
+                {
+                  "description": "引导思考何时应该使用 force，如何避免覆盖远程标签。",
+                  "duration_minutes": 5,
+                  "title": "讨论：--force 的风险与适用场景",
+                  "type": "discussion"
+                }
+              ],
+              "title": "发布版本与确认操作"
+            },
+            {
+              "description": "能诊断发布失败原因，合理使用 --force 和重新审计，掌握恢复手段。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "列举远程标签冲突、CHANGELOG未同步、GitHub Release已存在等。",
+                  "duration_minutes": 10,
+                  "title": "常见发布故障场景",
+                  "type": "lecture"
+                },
+                {
+                  "description": "演示使用 release status 和 release audit 定位问题，然后决定是否用 force。",
+                  "duration_minutes": 10,
+                  "title": "故障排查命令链",
+                  "type": "demo"
+                },
+                {
+                  "description": "在已有标签的仓库中运行 release publish --force --version v1.0.0 并观察输出。",
+                  "duration_minutes": 10,
+                  "title": "强制发布模拟",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员模拟一个失败场景，自行通过命令链诊断并成功发布。",
+                  "duration_minutes": 10,
+                  "title": "演练：从失败到恢复",
+                  "type": "exercise"
+                },
+                {
+                  "description": "多项选择题：关于 release publish 的 dry-run、force 正确理解。",
+                  "duration_minutes": 5,
+                  "title": "阶段测验",
+                  "type": "quiz"
+                }
+              ],
+              "title": "发布故障排查与强制发布"
+            }
+          ],
+          "title": "发布管理（核心）"
+        },
+        {
+          "description": "学会使用 doctor 检查环境依赖，以及使用 status/audit 总体概览项目健康状况。",
+          "lessons": [
+            {
+              "description": "能运行 doctor status 诊断外部命令（git, cargo等）是否可用，理解 doctor 在 CI 中的作用。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "介绍 doctor 子命令的作用——检查外部工具链状态。",
+                  "duration_minutes": 10,
+                  "title": "Doctor 命令概述",
+                  "type": "lecture"
+                },
+                {
+                  "description": "运行 doctor status，展示 git、cargo 等命令的检查结果。",
+                  "duration_minutes": 10,
+                  "title": "doctor status 演示",
+                  "type": "demo"
+                },
+                {
+                  "description": "解析 qtcloud_devops_cli::doctor::status 的实现思路（调用 which 或命令 --version）。",
+                  "duration_minutes": 10,
+                  "title": "代码分析：如何检查命令",
+                  "type": "lecture"
+                },
+                {
+                  "description": "学员临时移除某个命令（如 git），运行 doctor status 观察错误信息。",
+                  "duration_minutes": 10,
+                  "title": "动手：模拟缺失工具",
+                  "type": "exercise"
+                },
+                {
+                  "description": "为什么建议在CI脚本开头执行 doctor status。",
+                  "duration_minutes": 5,
+                  "title": "讨论：环境诊断在CI流水线中的位置",
+                  "type": "discussion"
+                }
+              ],
+              "title": "环境诊断与工具链检查"
+            },
+            {
+              "description": "能使用 status 和 audit 命令一键查看所有阶段状态，理解其背后的代码调度逻辑。",
+              "duration_minutes": 45,
+              "scenes": [
+                {
+                  "description": "讲解 status 命令依次调用 contract、doctor、plan、code、build、test、release status 的设计，体现一站式概览。",
+                  "duration_minutes": 10,
+                  "title": "聚合命令设计意图",
+                  "type": "lecture"
+                },
+                {
+                  "description": "在项目中执行 status，展示每个阶段输出。",
+                  "duration_minutes": 10,
+                  "title": "运行聚合 status",
+                  "type": "demo"
+                },
+                {
+                  "description": "执行 audit 命令，对比与各独立 audit 的差异。",
+                  "duration_minutes": 10,
+                  "title": "运行聚合 audit",
+                  "type": "demo"
+                },
+                {
+                  "description": "学员从零开始：安装 → 代码审计 → 构建 → 测试 → 计划 → 发布审计 → 发布，最后运行 status 验证整体状态。",
+                  "duration_minutes": 10,
+                  "title": "完成端到端演练",
+                  "type": "exercise"
+                },
+                {
+                  "description": "回顾最初困惑：发布前必须审计的原因，总结工具学习路线，鼓励在真实项目中使用。",
+                  "duration_minutes": 5,
+                  "title": "课程总结与展望",
+                  "type": "review"
+                }
+              ],
+              "title": "聚合状态与概览审计"
+            }
+          ],
+          "title": "综合诊断与审计"
+        }
+      ],
+      "title": "QtCloud DevOps CLI 实战课程"
+    }
+  ],
+  "description": "从零掌握基于Rust的DevOps CLI工具，聚焦发布流程中的常见困惑，建立从审计到发布的完整工作流意识。",
+  "title": "DevOps CLI工具实战"
+}
