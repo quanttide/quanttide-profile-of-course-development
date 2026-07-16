@@ -1,0 +1,95 @@
+{
+  "description": "掌握手动完成版本发布的完整流程，包括正常操作与常见异常处理，理解小步快跑的核心理念和版本号规则。",
+  "duration_minutes": 45,
+  "scenes": [
+    {
+      "description": "修改配置文件中的版本字段，例如在 Python 项目的 pyproject.toml 中将 `version = \"0.1.0\"` 改为 `version = \"0.2.0\"`。操作前确认最新标签与配置文件版本一致。",
+      "duration_minutes": 3,
+      "exception": {
+        "description": "版本号不符合 SemVer 规范（如缺少 `v` 前缀或预发布后缀格式错误）。需检查格式并重新修改：确保为 `vX.Y.Z`（正式版）或 `vX.Y.Z-alpha.N` 等形式。",
+        "duration_minutes": 2,
+        "title": "版本号格式错误"
+      },
+      "title": "更新版本号"
+    },
+    {
+      "description": "在 CHANGELOG.md 顶部添加当前版本的变更记录，格式遵循 Keep a Changelog 规范，按 Added、Changed、Fixed、Removed 分类。例如：\n```markdown\n## [0.2.0] - 2026-06-29\n\n### Added\n- 新功能描述\n\n### Fixed\n- 修复描述\n```",
+      "duration_minutes": 3,
+      "exception": {
+        "description": "若未提前准备 CHANGELOG，需根据 git log 补写。处理方式：查看两个 tag 之间的提交记录 `git log v0.1.0..v0.2.0 --oneline`，手动按分类整理并写入。",
+        "duration_minutes": 3,
+        "title": "CHANGELOG 缺失或格式不规范"
+      },
+      "title": "更新 CHANGELOG"
+    },
+    {
+      "description": "将版本号变更和 CHANGELOG 更新提交到 Git 仓库：\n```bash\ngit add pyproject.toml CHANGELOG.md\ngit commit -m \"chore: bump to v0.2.0\"\n```",
+      "duration_minutes": 2,
+      "exception": {
+        "description": "存在未提交的变更时提交会失败。需先使用 `git stash` 暂存或提交其他变更，确保工作区干净后再执行本步骤。",
+        "duration_minutes": 2,
+        "title": "工作区不干净"
+      },
+      "title": "提交修改"
+    },
+    {
+      "description": "为当前提交创建版本标签并推送至远程：\n```bash\ngit tag v0.2.0\ngit push origin v0.2.0\n```\n标签格式为 `vX.Y.Z`（单组件项目）或 `scope/vX.Y.Z`（多组件项目，如 `cli/v0.6.0`）。",
+      "duration_minutes": 3,
+      "exception": {
+        "description": "若标签已存在，或漏写了 scope 前缀（如本应为 `cli/v0.1.0-rc.1` 却打成 `v0.1.0-rc.1`），需先删除错误标签再重建。\n```bash\ngit tag -d v0.1.0-rc.1\ngit push --delete origin v0.1.0-rc.1\ngit tag cli/v0.1.0-rc.1 <commit-sha>\ngit push origin cli/v0.1.0-rc.1\n```\n同时清理对应的 GitHub Release（若有）。",
+        "duration_minutes": 5,
+        "title": "标签冲突或前缀缺失"
+      },
+      "title": "打标签"
+    },
+    {
+      "description": "使用 GitHub CLI 创建 Release，并将 CHANGELOG 内容粘贴到 Release body：\n```bash\ngh release create v0.2.0 \\\n  --title v0.2.0 \\\n  --notes \"CHANGELOG 内容粘贴到这里\"\n```",
+      "duration_minutes": 3,
+      "exception": {
+        "description": "若 tag 和 CHANGELOG 已存在但忘记创建 Release，可直接从 CHANGELOG 中提取对应版本条目补建：\n```bash\ngh release create v0.2.0 \\\n  --title v0.2.0 \\\n  --notes \"$(sed -n '/## \\[0\\.2\\.0\\]/,/^## /p' CHANGELOG.md | head -n -1)\"\n```",
+        "duration_minutes": 4,
+        "title": "缺少 GitHub Release"
+      },
+      "title": "创建 GitHub Release"
+    },
+    {
+      "description": "当 tag 和 CHANGELOG 已存在但缺少 GitHub Release 时，从 CHANGELOG 中提取对应版本的条目来创建 Release：\n```bash\ngh release create v0.2.0 \\\n  --title v0.2.0 \\\n  --notes \"$(cat CHANGELOG.md 中 v0.2.0 版本的条目)\"\n```",
+      "duration_minutes": 4,
+      "exception": null,
+      "title": "根据 CHANGELOG 补建 Release"
+    },
+    {
+      "description": "当缺少 CHANGELOG 但 tag 和 Release 存在时，以 git log 为源手动整理变更分类，遵循 Keep a Changelog 规范写入 CHANGELOG.md。例如查看两个 tag 之间的 commit：\n```bash\ngit log v0.1.0..v0.2.0 --oneline\n```\n然后对照 commit 记录按 Added、Changed、Fixed、Removed 分类编写。若 Release body 存在可辅助判断分类。",
+      "duration_minutes": 8,
+      "exception": null,
+      "title": "根据 git log 补写 CHANGELOG"
+    },
+    {
+      "description": "删除本地和远程的错误或废弃标签：\n```bash\ngit push --delete origin v0.1.0\ngit tag -d v0.1.0\n```",
+      "duration_minutes": 2,
+      "exception": {
+        "description": "若标签已被其他操作提前删除，`git tag -d` 会报错。可先列出标签确认 `git tag`，若确实不存在则忽略该步骤。",
+        "duration_minutes": 1,
+        "title": "标签不存在"
+      },
+      "title": "删除 Git 标签"
+    },
+    {
+      "description": "删除废弃或错误的 GitHub Release：\n```bash\ngh release delete v0.1.0 --yes\n```",
+      "duration_minutes": 2,
+      "exception": {
+        "description": "若 Release 已被删除或未创建，`gh release delete` 会提示错误。可通过 `gh release list` 确认，若不存在则跳过。",
+        "duration_minutes": 1,
+        "title": "Release 不存在"
+      },
+      "title": "删除 GitHub Release"
+    },
+    {
+      "description": "当标签缺少 scope 前缀时，先删除错误标签，再在相同 commit 上以正确名称创建并推送：\n```bash\ngit tag -d v0.1.0-rc.1\ngit push --delete origin v0.1.0-rc.1\ngit tag cli/v0.1.0-rc.1 <commit-sha>\ngit push origin cli/v0.1.0-rc.1\n```\n注意：若该标签已有 Release，需同时删除并重建 Release。",
+      "duration_minutes": 4,
+      "exception": null,
+      "title": "重建 Git 标签（纠正前缀）"
+    }
+  ],
+  "title": "release"
+}
