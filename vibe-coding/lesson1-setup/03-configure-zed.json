@@ -1,26 +1,21 @@
 {
-  "description": "在 Zed 编辑器中为 Agent 配置 DeepSeek API 密钥，使其能够调用 AI 模型进行对话和代码辅助。",
-  "duration_minutes": 15,
+  "description": "氛围编程开发环境搭建的第三步：在 Zed Agent 中配置 DeepSeek API 密钥。",
   "steps": [
     {
-      "description": "点击 Zed 编辑器左上角的星星图标（或使用快捷键 Ctrl+Shift+A / Cmd+Shift+A），打开 Zed Agent 侧边面板。",
-      "duration_minutes": 2,
+      "description": "在 Zed 编辑器界面中，点击左上角的星星图标，即可打开 Zed Agent 面板。",
       "title": "打开 Zed Agent 面板"
     },
     {
-      "description": "在 Zed Agent 面板右下角找到倒数第二个按钮「Select a model」并点击，然后点击弹出的 Configure 按钮，进入模型配置页面。",
-      "duration_minutes": 3,
-      "title": "进入模型选择与配置页面"
+      "description": "在 Zed Agent 面板右下角，找到倒数第二个按钮「Select a model」并点击，然后在新出现的菜单中点击「Configure」，进入模型配置页面。",
+      "title": "选择模型并进入配置"
     },
     {
-      "description": "在配置页面点击「LLM Provider」，从下拉列表中选择 DeepSeek。在密钥输入框中粘贴之前复制好的 DeepSeek API 密钥（如 sk-xxxxxxxx），确保无多余空格。",
-      "duration_minutes": 5,
+      "description": "在模型配置页面中，点击「LLM Provider」选项，进入 API 密钥配置页面。从下拉列表中找到并选择「DeepSeek」，将之前复制好的 DeepSeek API 密钥粘贴到相应输入框中。",
       "title": "配置 DeepSeek API 密钥"
     },
     {
-      "description": "关闭配置页面返回 Zed Agent 面板，在输入框中输入一条测试消息（例如“Hello”），点击发送。若正常收到回复，则配置成功。",
-      "duration_minutes": 5,
-      "title": "验证配置并测试对话"
+      "description": "关闭配置页面，返回 Zed Agent 面板。在输入框中输入一条消息（例如“Hello”），尝试与 DeepSeek 模型进行对话，确认配置成功。",
+      "title": "关闭配置并测试对话"
     }
   ],
   "title": "Zed Agent 配置 DeepSeek 密钥"

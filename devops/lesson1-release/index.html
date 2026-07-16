@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>release — DAG</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; padding: 20px; overflow-x: auto; }
-.container { max-width: 1600px; margin: 0 auto; }
-h1 { text-align: center; font-size: 22px; margin-bottom: 4px; color: #f1f5f9; }
-.subtitle { text-align: center; font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
-.stats { display: flex; justify-content: center; gap: 20px; margin-bottom: 24px; }
-.stat { text-align: center; }
-.stat-value { font-size: 28px; font-weight: 700; color: #38bdf8; }
-.stat-label { font-size: 11px; color: #64748b; }
-.dag-row { display: flex; align-items: flex-start; gap: 0; overflow-x: auto; padding: 10px 0; justify-content: center; }
-.dag-node-group { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
-.node { background: #1e293b; border-radius: 12px; padding: 16px; min-width: 200px; max-width: 220px; border: 1px solid #334155; flex-shrink: 0; transition: all 0.2s; }
-.node:hover { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.1); }
-.node-header { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
-.node-num { font-size: 10px; background: #334155; padding: 2px 6px; border-radius: 4px; color: #94a3b8; font-weight: 600; white-space: nowrap; }
-.node-title { font-size: 14px; font-weight: 600; color: #f1f5f9; }
-.node-time { font-size: 11px; color: #64748b; margin-left: auto; white-space: nowrap; }
-.node-desc { font-size: 12px; color: #94a3b8; line-height: 1.5; }
-.node.exception { border-color: #7f1d1d; background: #1e0a0a; min-width: 190px; }
-.node.exception .node-title { color: #fca5a5; }
-.node.exception:hover { border-color: #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.1); }
-.exc-group { display: flex; flex-direction: column; gap: 6px; align-items: center; position: relative; padding-top: 6px; }
-.exc-group::before { content: ''; position: absolute; top: 0; width: 2px; height: 6px; background: #7f1d1d; }
-.arrow { display: flex; align-items: center; font-size: 22px; color: #475569; padding: 0 6px; flex-shrink: 0; align-self: center; user-select: none; }
-@media (max-width: 700px) {
-  .node { min-width: 170px; }
-  .node.exception { min-width: 160px; }
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:#0f172a; color:#e2e8f0; min-height:100vh; padding:20px; overflow-x:auto; }
+.container { max-width:1600px; margin:0 auto; }
+h1 { text-align:center; font-size:22px; margin-bottom:4px; color:#f1f5f9; }
+.subtitle { text-align:center; font-size:13px; color:#94a3b8; margin-bottom:16px; }
+.stats { display:flex; justify-content:center; gap:20px; margin-bottom:24px; }
+.stat { text-align:center; }
+.stat-value { font-size:28px; font-weight:700; color:#38bdf8; }
+.stat-label { font-size:11px; color:#64748b; }
+.dag-row { display:flex; align-items:flex-start; gap:0; overflow-x:auto; padding:10px 0; justify-content:center; }
+.dag-node-group { display:flex; flex-direction:column; align-items:center; gap:8px; flex-shrink:0; }
+.node { background:#1e293b; border-radius:12px; padding:16px; min-width:200px; max-width:220px; border:1px solid #334155; flex-shrink:0; transition:all .2s; }
+.node:hover { border-color:#38bdf8; box-shadow:0 0 20px rgba(56,189,248,.1); }
+.node-header { display:flex; align-items:center; gap:6px; margin-bottom:4px; flex-wrap:wrap; }
+.node-num { font-size:10px; background:#334155; padding:2px 6px; border-radius:4px; color:#94a3b8; font-weight:600; white-space:nowrap; }
+.node-title { font-size:14px; font-weight:600; color:#f1f5f9; }
+.node-desc { font-size:12px; color:#94a3b8; line-height:1.5; }
+.node.exception { border-color:#7f1d1d; background:#1e0a0a; min-width:190px; }
+.node.exception .node-title { color:#fca5a5; }
+.node.exception:hover { border-color:#ef4444; box-shadow:0 0 20px rgba(239,68,68,.1); }
+.exc-group { display:flex; flex-direction:column; gap:6px; align-items:center; position:relative; padding-top:6px; }
+.exc-group::before { content:''; position:absolute; top:0; width:2px; height:6px; background:#7f1d1d; }
+.arrow { display:flex; align-items:center; font-size:22px; color:#475569; padding:0 6px; flex-shrink:0; align-self:center; user-select:none; }
 </style>
 </head>
 <body>
@@ -42,95 +36,28 @@ h1 { text-align: center; font-size: 22px; margin-bottom: 4px; color: #f1f5f9; }
 <div class="stats">
   <div class="stat"><div class="stat-value">5</div><div class="stat-label">场景</div></div>
   <div class="stat"><div class="stat-value">3</div><div class="stat-label">异常分支</div></div>
-  <div class="stat"><div class="stat-value">45</div><div class="stat-label">总时长</div></div>
 </div>
 <div class="dag-row">
-  <div class="dag-node-group">
-    <div class="node">
-      <div class="node-header">
-        <span class="node-num">场景 1</span>
-        <span class="node-title">更新版本号</span>
-        <span class="node-time">⏱ 8分钟</span>
-      </div>
-      <div class="node-desc">在发布流程中，修改项目配置文件中的版本字段，确保与Git标签一致，并按语义化版本规范递增。</div>
-    </div>
-    
+  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 1</span><span class="node-title">更新版本号</span></div><div class="node-desc">在发布流程中，修改项目配置文件中的版本字段，确保与Git标签一致，并按语义化版本规范递增。</div></div>
   </div>
   <div class="arrow">➜</div>
-  <div class="dag-node-group">
-    <div class="node">
-      <div class="node-header">
-        <span class="node-num">场景 2</span>
-        <span class="node-title">更新 CHANGELOG</span>
-        <span class="node-time">⏱ 15分钟</span>
-      </div>
-      <div class="node-desc">在 CHANGELOG.md 顶部添加当前版本的变更记录，遵循 Keep a Changelog 规范，按 Added、Changed、Fixed、Removed 分类并标注发布日期。</div>
-    </div>
-    <div class="exc-group">
-    <div class="node exception">
-      <div class="node-header">
-        <span class="node-num">⚠️ 异常</span>
-        <span class="node-title">补写缺失的 CHANGELOG 条目</span>
-        <span class="node-time">⏱ 15分钟</span>
-      </div>
-      <div class="node-desc">当 Release body 与 Tag 均存在但 CHANGELOG 文件中缺少对应版本的条目时，以 git log 为源，手动整理并补写 CHANGELOG。此过程确保变更记录准确、可追溯，不依赖</div>
-    </div>
-    </div>
+  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 2</span><span class="node-title">更新 CHANGELOG</span></div><div class="node-desc">在 CHANGELOG.md 顶部添加当前版本的变更记录，遵循 Keep a Changelog 规范，按 Added、Changed、Fixed、Removed 分类并标注发布日期。</div></div>
+<div class="exc-group">
+    <div class="node exception"><div class="node-header"><span class="node-num">⚠️ 异常</span><span class="node-title">补写缺失的 CHANGELOG 条目</span></div><div class="node-desc">当 Release body 与 Tag 均存在但 CHANGELOG 文件中缺少对应版本的条目时，以 git log 为源，手动整理并补写 CHANGELOG。此过程确保变更记录准确、可追溯，不依赖</div></div>
+    </div>  </div>
+  <div class="arrow">➜</div>
+  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 3</span><span class="node-title">提交修改</span></div><div class="node-desc">发布流程第三步：将版本号和 CHANGELOG 的修改提交到 Git，确保工作区干净并生成规范的提交记录。</div></div>
   </div>
   <div class="arrow">➜</div>
-  <div class="dag-node-group">
-    <div class="node">
-      <div class="node-header">
-        <span class="node-num">场景 3</span>
-        <span class="node-title">提交修改</span>
-        <span class="node-time">⏱ 5分钟</span>
-      </div>
-      <div class="node-desc">发布流程第三步：将版本号和 CHANGELOG 的修改提交到 Git，确保工作区干净并生成规范的提交记录。</div>
-    </div>
-    
-  </div>
+  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 4</span><span class="node-title">打标签 (Tagging)</span></div><div class="node-desc">为当前提交创建版本标签并推送到远程，确保发布版本的唯一性和可追溯性。标签是发布流程中不可重写的锚点，用于稳定标记发布版本。</div></div>
+<div class="exc-group">
+    <div class="node exception"><div class="node-header"><span class="node-num">⚠️ 异常</span><span class="node-title">Tag scope 前缀缺失修复</span></div><div class="node-desc">当 Tag 属于某个 scope（如 cli）但漏写了 scope 前缀时，需要删除错误的根级别 tag，在正确的位置重建 tag（指向同一 commit），并处理可能存在的孤立 Release。</div></div>
+    </div>  </div>
   <div class="arrow">➜</div>
-  <div class="dag-node-group">
-    <div class="node">
-      <div class="node-header">
-        <span class="node-num">场景 4</span>
-        <span class="node-title">打标签 (Tagging)</span>
-        <span class="node-time">⏱ 15分钟</span>
-      </div>
-      <div class="node-desc">为当前提交创建版本标签并推送到远程，确保发布版本的唯一性和可追溯性。标签是发布流程中不可重写的锚点，用于稳定标记发布版本。</div>
-    </div>
-    <div class="exc-group">
-    <div class="node exception">
-      <div class="node-header">
-        <span class="node-num">⚠️ 异常</span>
-        <span class="node-title">Tag scope 前缀缺失修复</span>
-        <span class="node-time">⏱ 15分钟</span>
-      </div>
-      <div class="node-desc">当 Tag 属于某个 scope（如 cli）但漏写了 scope 前缀时，需要删除错误的根级别 tag，在正确的位置重建 tag（指向同一 commit），并处理可能存在的孤立 Release。</div>
-    </div>
-    </div>
-  </div>
-  <div class="arrow">➜</div>
-  <div class="dag-node-group">
-    <div class="node">
-      <div class="node-header">
-        <span class="node-num">场景 5</span>
-        <span class="node-title">创建 GitHub Release</span>
-        <span class="node-time">⏱ 15分钟</span>
-      </div>
-      <div class="node-desc">在 GitHub 上创建 Release，并附上该版本的完整 CHANGELOG 内容。</div>
-    </div>
-    <div class="exc-group">
-    <div class="node exception">
-      <div class="node-header">
-        <span class="node-num">⚠️ 异常</span>
-        <span class="node-title">修复缺失的 GitHub Release</span>
-        <span class="node-time">⏱ 10分钟</span>
-      </div>
-      <div class="node-desc">当 Tag 和 CHANGELOG 已存在但缺少 Release 时，使用 CHANGELOG 内容补建 Release。这是最安全的修复——tag 和 CHANGELOG 都是已确认的事实源。</div>
-    </div>
-    </div>
-  </div>
+  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 5</span><span class="node-title">创建 GitHub Release</span></div><div class="node-desc">在 GitHub 上创建 Release，并附上该版本的完整 CHANGELOG 内容。</div></div>
+<div class="exc-group">
+    <div class="node exception"><div class="node-header"><span class="node-num">⚠️ 异常</span><span class="node-title">修复缺失的 GitHub Release</span></div><div class="node-desc">当 Tag 和 CHANGELOG 已存在但缺少 Release 时，使用 CHANGELOG 内容补建 Release。这是最安全的修复——tag 和 CHANGELOG 都是已确认的事实源。</div></div>
+    </div>  </div>
 </div>
 </div>
 </body>

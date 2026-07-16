@@ -1,37 +1,54 @@
 {
-  "description": "完成Zed编辑器的安装与初始化设置，注册DeepSeek账号并获取API密钥，最后在Zed Assistant面板中配置密钥并验证连接可用，为后续氛围编程实战打好基础。",
-  "duration_minutes": 45,
+  "description": "完成Zed编辑器的安装与配置，注册DeepSeek账号并获取API密钥，最终在Zed中配置并验证DeepSeek连接。",
   "scenes": [
     {
-      "description": "访问Zed官方网站（zed.dev），根据操作系统（macOS/Windows/Linux）下载对应安装包。例如，macOS用户下载.dmg文件并拖拽至Applications文件夹完成安装；Windows用户运行.exe安装程序；Linux用户通过AppImage或包管理器安装。安装完成后打开Zed，进行个性化设置：选择深色或浅色主题（如Dracula、One Dark）、配置常用快捷键（如与VS Code一致）、安装必要插件（如GitLens、Markdown Preview）。",
-      "duration_minutes": 15,
+      "description": "从官方渠道（如 zed.dev）下载对应操作系统的安装包（如 .dmg、.exe 或 .deb），双击安装包并按照向导完成安装。例如，在 macOS 上将 Zed 拖拽到 Applications 文件夹；在 Windows 上运行安装程序并同意许可协议。",
       "exception": {
-        "description": "若下载失败，检查网络连接或更换镜像源；若安装后无法启动，尝试以管理员权限运行或检查系统版本兼容性；若主题/插件加载异常，重启Zed或手动从扩展市场重新安装。",
-        "duration_minutes": 5,
-        "title": "安装或配置异常"
+        "description": "若安装时提示“无法打开”或权限问题，请检查系统设置中的安全与隐私（macOS）或尝试以管理员身份运行（Windows）。若下载包损坏，重新下载并校验 SHA256 值。",
+        "title": "安装失败或权限不足"
       },
-      "title": "Zed的安装与初始化"
+      "title": "下载并安装 Zed"
     },
     {
-      "description": "访问DeepSeek官网（deepseek.com），点击「注册」按钮，填写邮箱地址、设置密码（建议使用大小写字母+数字组合），完成人机验证后提交。前往注册邮箱点击验证链接激活账号。登录后进入「API管理」页面，点击「生成新密钥」，复制生成的密钥（如sk-xxxxxxxx）并保存到本地安全位置。",
-      "duration_minutes": 10,
+      "description": "打开 Zed，进入 Settings（按 Cmd+, 或 Ctrl+,），根据个人习惯配置主题（如 One Dark、Catppuccin）、快捷键（可导入 VS Code 方案）和插件（如 Prettier、ESLint）。例如，选择“Monokai Pro”主题并安装“GitLens”插件以增强代码协作。",
       "exception": {
-        "description": "若收不到验证邮件，检查垃圾箱或重新发送；若邮箱已被注册，尝试找回密码；若密钥生成失败，刷新页面重试，或检查账号是否已通过邮箱验证。",
-        "duration_minutes": 3,
-        "title": "注册或密钥生成异常"
+        "description": "若设置界面无响应，重启 Zed 或检查网络连接。插件安装失败时，尝试手动从 Zed 官方插件市场下载并拖入扩展目录，或临时关闭代理/防火墙。",
+        "title": "设置界面卡顿或插件安装失败"
       },
-      "title": "注册并获取DeepSeek密钥"
+      "title": "完成 Zed 基础设置"
     },
     {
-      "description": "打开Zed，通过快捷键（macOS: Cmd+Shift+E，Windows/Linux: Ctrl+Shift+E）或菜单「View > Assistant」打开Assistant面板。点击面板右上角的齿轮图标进入设置，在「API Key」输入框中粘贴之前复制的DeepSeek密钥。关闭设置后，在输入框中发送测试请求，例如「请用Python写一个计算平均数的函数」，确认能收到完整回复。若回复正常，说明连接成功；若返回错误，检查密钥是否完整或网络是否通畅。",
-      "duration_minutes": 20,
+      "description": "访问 DeepSeek 官网（platform.deepseek.com），点击“注册”，填写邮箱（如 user@example.com）、设置密码并完成邮箱验证。注意：部分邮箱可能被标记为垃圾邮件，请检查收件箱或垃圾箱。",
       "exception": {
-        "description": "若粘贴密钥后提示无效，重新从DeepSeek API管理页面复制并确认无多余空格；若发送请求后无响应或超时，检查网络代理设置，或尝试更换其他网络环境；若Zed Assistant面板无法打开，重启软件或更新到最新版本。",
-        "duration_minutes": 5,
-        "title": "密钥配置或连接异常"
+        "description": "若提示邮箱已注册，直接登录；若忘记密码，使用“忘记密码”重置。未收到验证邮件时，等待5分钟后重试，或更换其他邮箱（如 Gmail、Outlook）。",
+        "title": "邮箱已被注册或验证邮件未收到"
       },
-      "title": "Zed Agent配置DeepSeek密钥并验证"
+      "title": "注册 DeepSeek 账号"
+    },
+    {
+      "description": "登录 DeepSeek 账号，进入“API Keys”管理页面，点击“创建新密钥”，设置密钥名称（如“my-zed-key”），生成后立即复制并保存到安全位置（如密码管理器或本地加密文件）。注意：密钥只显示一次，请勿泄露。",
+      "exception": {
+        "description": "若点击创建后无反应，刷新页面或更换浏览器（推荐 Chrome 最新版）。若忘记复制，可删除原密钥并重新生成，旧密钥将失效。切勿将密钥公开在代码仓库或共享文档中。",
+        "title": "密钥生成失败或复制丢失"
+      },
+      "title": "生成并复制 DeepSeek API 密钥"
+    },
+    {
+      "description": "打开 Zed，按 Shift+Cmd+A（macOS）或 Ctrl+Shift+A（Windows/Linux）打开 Assistant 面板，点击设置图标进入配置界面，找到“DeepSeek API Key”输入框，粘贴之前复制的密钥，保存设置。例如，填入 sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx。",
+      "exception": {
+        "description": "若提示“Invalid API Key”，检查是否有多余空格或换行符，重新复制并粘贴。若找不到配置项，确认 Zed 版本是否为最新（≥2023.11），或重启 Zed 后重试。",
+        "title": "密钥无效或配置项未找到"
+      },
+      "title": "在 Zed Assistant 面板中填入 DeepSeek 密钥"
+    },
+    {
+      "description": "在 Assistant 面板中选择 DeepSeek 模型（如 deepseek-chat），发送一条测试消息，例如“Hello, World! 请用中文回复”，等待模型返回正确结果。成功返回后，表示配置完成。",
+      "exception": {
+        "description": "若请求超时，检查网络代理设置（确认是否限制 API 域名访问），或尝试 ping api.deepseek.com。若返回 401/403 错误，密钥可能已过期，重新生成。若返回额度耗尽，在 DeepSeek 控制台查看使用量并充值。",
+        "title": "网络超时或返回错误"
+      },
+      "title": "验证 DeepSeek 连接可用"
     }
   ],
-  "title": "氛围编程 — 课时1：开发环境搭建"
+  "title": "开发环境搭建"
 }
