@@ -1,26 +1,22 @@
 {
-  "description": "本步骤指导你完成 DeepSeek 账号注册、邮箱/手机验证、API 密钥的创建与保存，为后续开发环境搭建提供认证凭据。",
+  "description": "注册 DeepSeek 账号并获取 API 密钥，用于后续调用 DeepSeek 的 API 服务。",
   "steps": [
     {
-      "description": "打开浏览器，访问 DeepSeek 官方网站（https://platform.deepseek.com）。点击页面右上角的「注册」按钮。根据提示选择注册方式（邮箱或手机号）。注意：建议使用常用邮箱（如 Gmail、Outlook），避免使用部分国内邮箱（如 QQ 邮箱）可能出现的验证码延迟或丢失问题。",
-      "title": "访问官网并开始注册"
+      "description": "打开浏览器，访问 DeepSeek 官方网站（如 platform.deepseek.com）。点击页面上的「注册」按钮，输入邮箱地址（例如 user@example.com）或手机号，设置密码并同意用户协议。系统会发送验证码到您的邮箱或手机。",
+      "title": "访问 DeepSeek 官网并注册账号"
     },
     {
-      "description": "输入邮箱地址或手机号，设置登录密码。点击「获取验证码」后，检查收件箱或短信。若长时间未收到，可检查垃圾邮件文件夹或点击「重新发送」。输入正确的验证码后完成注册。常见异常：验证码接收失败时，可尝试更换浏览器或清除缓存后重试。",
-      "title": "填写信息并通过验证"
+      "description": "查收注册时填写的邮箱或手机收到的验证码（例如邮箱中的6位数字验证码 123456），在验证页面输入该验证码并点击「确认」。验证成功后，账号即注册完成。",
+      "title": "完成邮箱或手机验证"
     },
     {
-      "description": "注册成功后自动登录，或在登录页面输入刚刚注册的账号和密码。登录后，在左侧导航栏中找到「API Keys」（API 密钥）选项并点击进入。初次使用时页面可能为空，无需担心。",
-      "title": "登录并进入 API 密钥管理页面"
+      "description": "使用已注册的邮箱/手机号和密码登录 DeepSeek 平台。登录后，在页面右上角或导航栏中找到「API Keys」或「API 管理」入口，点击进入 API 密钥管理页面。",
+      "title": "登录并进入 API 管理页面"
     },
     {
-      "description": "点击「创建 API Key」按钮，系统将生成一个新的密钥字符串。**立即点击「复制」按钮将密钥保存到安全位置**（如密码管理器或本地加密文件）。注意：关闭页面后密钥将不再完整显示，若未保存只能重新创建。很多开发者在初次使用时因未及时复制而需要反复创建，请务必一次性完成保存。",
-      "title": "创建并复制 API 密钥"
-    },
-    {
-      "description": "打开终端或代码编辑器，使用 curl 命令或 Python 脚本测试密钥是否生效。例如执行：`curl -H \"Authorization: Bearer 你的密钥\" https://api.deepseek.com/v1/chat/completions -d '{\"model\":\"deepseek-chat\",\"messages\":[{\"role\":\"user\",\"content\":\"hello\"}]}'`。若返回正常 JSON 响应，则密钥配置成功。若返回 401 错误，请检查密钥是否正确复制（注意前后无多余空格）。",
-      "title": "验证密钥可用性（可选推荐）"
+      "description": "在 API 管理页面中，点击「创建密钥」或「新建 API Key」。系统会生成一段密钥（例如 sk-xxxxxxxxxxxxxxxx），请点击「复制」按钮将密钥复制到剪贴板，并立即保存到安全的位置（如密码管理器或本地加密文件）。注意：密钥只显示一次，关闭页面后将无法再次查看完整密钥。",
+      "title": "创建并保存 API 密钥"
     }
   ],
-  "title": "注册并获取 DeepSeek API 密钥"
+  "title": "获取 DeepSeek API 密钥"
 }

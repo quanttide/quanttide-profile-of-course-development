@@ -1,58 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>开发环境搭建 — DAG</title>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>氛围编程 — 课时1：开发环境搭建 — 蓝图预览</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:#0f172a; color:#e2e8f0; min-height:100vh; padding:20px; overflow-x:auto; }
-.container { max-width:1600px; margin:0 auto; }
+.container { max-width:1200px; margin:0 auto; }
 h1 { text-align:center; font-size:22px; margin-bottom:4px; color:#f1f5f9; }
-.subtitle { text-align:center; font-size:13px; color:#94a3b8; margin-bottom:16px; }
-.stats { display:flex; justify-content:center; gap:20px; margin-bottom:24px; }
-.stat { text-align:center; }
-.stat-value { font-size:28px; font-weight:700; color:#38bdf8; }
-.stat-label { font-size:11px; color:#64748b; }
-.dag-row { display:flex; align-items:flex-start; gap:0; overflow-x:auto; padding:10px 0; justify-content:center; }
-.dag-node-group { display:flex; flex-direction:column; align-items:center; gap:8px; flex-shrink:0; }
-.node { background:#1e293b; border-radius:12px; padding:16px; min-width:200px; max-width:220px; border:1px solid #334155; flex-shrink:0; transition:all .2s; }
-.node:hover { border-color:#38bdf8; box-shadow:0 0 20px rgba(56,189,248,.1); }
-.node-header { display:flex; align-items:center; gap:6px; margin-bottom:4px; flex-wrap:wrap; }
-.node-num { font-size:10px; background:#334155; padding:2px 6px; border-radius:4px; color:#94a3b8; font-weight:600; white-space:nowrap; }
-.node-title { font-size:14px; font-weight:600; color:#f1f5f9; }
-.node-desc { font-size:12px; color:#94a3b8; line-height:1.5; }
-.node.exception { border-color:#7f1d1d; background:#1e0a0a; min-width:190px; }
-.node.exception .node-title { color:#fca5a5; }
-.node.exception:hover { border-color:#ef4444; box-shadow:0 0 20px rgba(239,68,68,.1); }
-.exc-group { display:flex; flex-direction:column; gap:6px; align-items:center; position:relative; padding-top:6px; }
-.exc-group::before { content:''; position:absolute; top:0; width:2px; height:6px; background:#7f1d1d; }
-.arrow { display:flex; align-items:center; font-size:22px; color:#475569; padding:0 6px; flex-shrink:0; align-self:center; user-select:none; }
+.subtitle { text-align:center; font-size:13px; color:#94a3b8; margin-bottom:20px; }
 </style>
 </head>
-<body>
-<div class="container">
-<h1>📚 开发环境搭建 — DAG</h1>
-<div class="subtitle">完成Zed编辑器的安装与配置，注册DeepSeek账号并获取API密钥，最终在Zed中配置并验证DeepSeek连接。</div>
-<div class="stats">
-  <div class="stat"><div class="stat-value">3</div><div class="stat-label">场景</div></div>
-  <div class="stat"><div class="stat-value">3</div><div class="stat-label">异常分支</div></div>
+<body><div class="container">
+<h1>📚 氛围编程 — 课时1：开发环境搭建</h1>
+<div class="subtitle">完成Zed编辑器的下载安装、基础配置（主题、快捷键、插件），注册DeepSeek账号并获取API密钥，最后在Zed的Assistant面板中填入密钥并验证连接，为后续编程做好准备。</div>
+<div style="display:flex;justify-content:center;gap:20px;margin-bottom:24px;">
+<div style="text-align:center;"><div style="font-size:28px;font-weight:700;color:#38bdf8;">0</div><div style="font-size:11px;color:#64748b;">场景</div></div>
+<div style="text-align:center;"><div style="font-size:28px;font-weight:700;color:#38bdf8;">8</div><div style="font-size:11px;color:#64748b;">异常分支</div></div>
 </div>
-<div class="dag-row">
-  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 1</span><span class="node-title">开发环境搭建</span></div><div class="node-desc">本课时共包含三个场景：Zed 安装与初始化、注册并获取 DeepSeek 密钥、以及 Zed Agent 配置密钥。学员需按顺序完成以下 6 个步骤，即可搭建起“氛围编程”所需的完整开发环境。</div></div>
-<div class="exc-group">
-    <div class="node exception"><div class="node-header"><span class="node-num">⚠️ 异常</span><span class="node-title">Zed官网无法访问</span></div><div class="node-desc">当用户尝试访问Zed官网下载或安装Zed编辑器时，遇到网站无法访问的问题，需要按照步骤排查并解决。常见原因包括网络连接问题、官网维护、地区限制等，可通过检查网络、等待重试、使用代理或替代安装方式解决。</div></div>
-    </div>  </div>
-  <div class="arrow">➜</div>
-  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 2</span><span class="node-title">注册并获取 DeepSeek API 密钥</span></div><div class="node-desc">本步骤指导你完成 DeepSeek 账号注册、邮箱/手机验证、API 密钥的创建与保存，为后续开发环境搭建提供认证凭据。</div></div>
-<div class="exc-group">
-    <div class="node exception"><div class="node-header"><span class="node-num">⚠️ 异常</span><span class="node-title">vc-s2-ex DeepSeek注册异常排查流程</span></div><div class="node-desc">针对DeepSeek注册过程中可能出现的验证码接收失败、密钥未保存、注册信息错误等异常，提供顺序排查与修复步骤。</div></div>
-    </div>  </div>
-  <div class="arrow">➜</div>
-  <div class="dag-node-group"><div class="node"><div class="node-header"><span class="node-num">场景 3</span><span class="node-title">Zed Agent 配置 DeepSeek 密钥</span></div><div class="node-desc">氛围编程开发环境搭建的第三步：在 Zed Agent 中配置 DeepSeek API 密钥。</div></div>
-<div class="exc-group">
-    <div class="node exception"><div class="node-header"><span class="node-num">⚠️ 异常</span><span class="node-title">处理Zed版本过旧导致界面不匹配</span></div><div class="node-desc">当Zed版本低于0.15时，Agent面板入口位置不同，且可能没有「Select a model」按钮。本步骤引导您识别旧版本，先通过手动修改settings.json临时配置Agent，再升级Zed</div></div>
-    </div>  </div>
-</div>
-</div>
-</body>
+<div style="display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding:10px 0;justify-content:center;"></div>
+</div></body>
 </html>

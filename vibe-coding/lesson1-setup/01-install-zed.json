@@ -1,30 +1,26 @@
 {
-  "description": "本课时共包含三个场景：Zed 安装与初始化、注册并获取 DeepSeek 密钥、以及 Zed Agent 配置密钥。学员需按顺序完成以下 6 个步骤，即可搭建起“氛围编程”所需的完整开发环境。",
+  "description": "下载并安装 Zed 编辑器，完成初始化配置。",
   "steps": [
     {
-      "description": "访问 Zed 官网，根据操作系统（Windows/macOS/Linux）下载对应版本的安装包。此步骤对应 Scene 1 的起始操作，无需任何前置依赖。",
-      "title": "下载 Zed 安装程序"
+      "description": "访问 zed.dev 官网，根据操作系统（Windows、macOS 或 Linux）下载对应的 Zed 安装包。例如，macOS 用户可下载 .dmg 文件，Windows 用户可下载 .exe 安装程序。",
+      "title": "下载安装包"
     },
     {
-      "description": "运行下载的安装包，按照默认或自定义路径完成安装。安装完成后首次启动 Zed，确认编辑器窗口正常打开。此步骤为 Scene 1 的基础操作。",
+      "description": "双击下载的安装包，按照系统提示完成安装。安装完成后，在应用程序列表或桌面找到 Zed 图标并启动编辑器。例如，macOS 用户将 .dmg 中的 Zed 拖入 Applications 文件夹，然后从 Launchpad 打开。",
       "title": "安装并启动 Zed"
     },
     {
-      "description": "在 Zed 设置界面中，根据个人偏好选择主题（如 Dark 或 Light）、调整快捷键绑定，并安装必备插件（如 Python、JavaScript 支持）。此步骤完成 Scene 1 的初始化设置，确保编辑器处于可用状态。",
-      "title": "配置 Zed 主题、快捷键与插件"
+      "description": "首次启动 Zed 时，会弹出配置向导。在主题选择页面，浏览预设的亮色和暗色主题（如 One Dark、Catppuccin 等），点击选中一个你喜欢的配色方案，例如选择 Zed 默认的暗色主题。",
+      "title": "选择主题配色"
     },
     {
-      "description": "打开 DeepSeek 官网，点击“注册”按钮，填写邮箱、密码并完成验证。此步骤对应 Scene 2 的注册环节，与 Scene 1 无依赖关系，可独立执行。",
-      "title": "注册 DeepSeek 账号"
+      "description": "在配置向导的快捷键布局步骤中，从三个选项中选择一种：Vim 模式（适合习惯 Vim 操作的用户）、VS Code 模式（与 VS Code 快捷键一致）或默认模式（Zed 原生快捷键）。例如，选择 VS Code 模式以沿用已有的编辑习惯。",
+      "title": "配置快捷键布局"
     },
     {
-      "description": "登录 DeepSeek 账号，进入 API 管理页面，点击“新建密钥”生成一个访问密钥，随后立即复制保存到安全位置。此步骤对应 Scene 2 的密钥获取操作，为下一步配置做准备。",
-      "title": "生成并复制 DeepSeek API 密钥"
-    },
-    {
-      "description": "在 Zed 中打开 Assistant 面板（快捷键 Ctrl+Shift+A 或 Cmd+Shift+A），找到 DeepSeek 配置项，粘贴之前复制的 API 密钥。点击“测试连接”按钮，若返回成功提示则表示配置完成。此步骤对应 Scene 3，依赖前两步（Zed 已初始化、密钥已获取）。",
-      "title": "在 Zed Agent 中填入密钥并测试连接"
+      "description": "完成基本配置后，Zed 会提供推荐插件列表，包括语言支持、LSP 和实用工具。勾选需要的插件（如 Rust、Python、Git 集成等），点击安装。例如，安装“rust-analyzer”插件以获得 Rust 语言的代码补全和诊断功能。",
+      "title": "安装推荐插件"
     }
   ],
-  "title": "开发环境搭建"
+  "title": "安装 Zed 编辑器"
 }
