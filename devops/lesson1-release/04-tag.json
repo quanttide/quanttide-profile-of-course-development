@@ -1,0 +1,27 @@
+{
+  "description": "为当前提交创建版本标签并推送到远程，确保发布版本的唯一性和可追溯性。标签是发布流程中不可重写的锚点，用于稳定标记发布版本。",
+  "duration_minutes": 15,
+  "steps": [
+    {
+      "description": "检查当前分支最近的提交（git log --oneline -1），确认提交内容与预期发布版本一致。根据语义化版本规范或项目约定确定标签版本号，如 v1.2.3 或 scope/v1.2.3。参考 CHANGELOG 或团队讨论确保版本号准确。",
+      "duration_minutes": 3,
+      "title": "确认当前提交与版本号"
+    },
+    {
+      "description": "根据项目类型执行标签创建命令：单组件项目使用 `git tag v1.2.3`；多组件项目使用 `git tag scope/v1.2.3`（例如 component/v1.0.1）。注意标签名不应与已有标签冲突，可先用 `git tag -l` 查看现有标签。此步骤生成指向当前提交的轻量或附注标签，建议使用附注标签（`-a`）以包含元信息。",
+      "duration_minutes": 4,
+      "title": "创建本地标签"
+    },
+    {
+      "description": "执行 `git push origin v1.2.3`（或具体标签名，如 `git push origin scope/v1.0.1`）将本地标签推送至远程仓库。注意只推送单个标签，避免推送所有标签（`--tags`）可能引入未就绪的标签。推送成功后，远程仓库会记录该标签为不可重写的发布锚点。",
+      "duration_minutes": 4,
+      "title": "推送标签到远程"
+    },
+    {
+      "description": "使用 `git ls-remote --tags origin` 或直接在远程仓库界面（如 GitHub/GitLab）确认标签已存在且指向正确提交。强调标签是发布流程中唯一不可重写的锚点，一旦推送即不可修改，因此需确保版本号准确无误。记录标签与发布版本的对应关系，更新发布文档或通知相关团队成员。",
+      "duration_minutes": 4,
+      "title": "验证远程标签并确认不可重写特性"
+    }
+  ],
+  "title": "打标签 (Tagging)"
+}

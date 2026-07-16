@@ -1,0 +1,32 @@
+{
+  "description": "当 Tag 属于某个 scope（如 cli）但漏写了 scope 前缀时，需要删除错误的根级别 tag，在正确的位置重建 tag（指向同一 commit），并处理可能存在的孤立 Release。",
+  "duration_minutes": 15,
+  "steps": [
+    {
+      "description": "查看当前仓库中根级别 Tag 列表，定位缺少 scope 前缀的 Tag（例如误将 'v1.0.0' 而非 'cli/v1.0.0'）。确认该 Tag 对应的 commit 哈希。",
+      "duration_minutes": 2,
+      "title": "识别错误的根级别 Tag"
+    },
+    {
+      "description": "使用 git tag -d <tag-name> 删除错误的根级别 Tag。例如：git tag -d v1.0.0。若已远程推送，还需使用 git push origin :refs/tags/v1.0.0 删除远程 Tag。",
+      "duration_minutes": 3,
+      "title": "删除错误的根级别 Tag"
+    },
+    {
+      "description": "使用相同 commit 创建带 scope 前缀的正确 Tag。例如：git tag cli/v1.0.0 <commit-hash>。然后推送至远程：git push origin cli/v1.0.0。",
+      "duration_minutes": 4,
+      "title": "在正确 scope 下重建 Tag"
+    },
+    {
+      "description": "检查是否存在与错误 Tag 关联的 GitHub/GitLab Release。若有，则删除该孤立 Release，并在正确 Tag 下补建 Release（填写相同的版本说明及附件）。",
+      "duration_minutes": 4,
+      "title": "处理对应的 Release（若有）"
+    },
+    {
+      "description": "本地执行 git tag -l 'cli/*' 确认存在正确 Tag；远程查看 Release 列表，确认孤立 Release 已移除且正确 Release 已创建。最终可执行 git log --oneline -1 cli/v1.0.0 确认指向的 commit 与原 Tag 一致。",
+      "duration_minutes": 2,
+      "title": "验证修复结果"
+    }
+  ],
+  "title": "Tag scope 前缀缺失修复"
+}

@@ -1,0 +1,32 @@
+{
+  "description": "在 GitHub 上创建 Release，并附上该版本的完整 CHANGELOG 内容。",
+  "duration_minutes": 15,
+  "steps": [
+    {
+      "description": "检查当前项目版本号（例如 v1.2.3），确认本地 Git 标签已创建且与 CHANGELOG 中的版本一致。若标签缺失，先执行 `git tag v1.2.3` 并推送。",
+      "duration_minutes": 2,
+      "title": "确认版本号和本地标签"
+    },
+    {
+      "description": "从 CHANGELOG.md 中截取当前版本的完整内容。可使用命令：`awk '/^## v1.2.3/,/^## v/{if(!/^## v/ || NR==1) print; else exit}' CHANGELOG.md | head -n-1` 或 `sed` 提取。确认内容包含新特性、修复等条目。",
+      "duration_minutes": 5,
+      "title": "提取 CHANGELOG 条目"
+    },
+    {
+      "description": "运行 `gh release create v1.2.3 --title v1.2.3 --notes \"$(提取的内容)\"`。如果内容较长，可先保存到临时文件 `gh release create v1.2.3 --title v1.2.3 --notes-file /tmp/notes.txt`。确保 GitHub CLI 已认证。",
+      "duration_minutes": 3,
+      "title": "执行 gh release create 命令"
+    },
+    {
+      "description": "在浏览器中打开 GitHub 仓库的 Releases 页面，确认新版本已列出且标题、描述正确。也可用 `gh release view v1.2.3` 查看详情。检查附件（如二进制文件）是否已上传（若有要求）。",
+      "duration_minutes": 3,
+      "title": "验证 Release 发布成功"
+    },
+    {
+      "description": "如果使用 CI/CD 流程，将 Release 的 URL 或 ID 记录到构建产物中。例如保存到 `release_url.txt`。同时通知团队成员 Release 已完成，可开始部署或测试。",
+      "duration_minutes": 2,
+      "title": "更新本地或 CI 记录"
+    }
+  ],
+  "title": "创建 GitHub Release"
+}

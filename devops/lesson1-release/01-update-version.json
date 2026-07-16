@@ -1,0 +1,27 @@
+{
+  "description": "在发布流程中，修改项目配置文件中的版本字段，确保与Git标签一致，并按语义化版本规范递增。",
+  "duration_minutes": 8,
+  "steps": [
+    {
+      "description": "执行 git tag --list 查看最新标签，同时打开项目配置文件（如 pyproject.toml 或 Cargo.toml）定位 version 字段，如 version = \"1.2.0\"，确认两者一致。若不一致，先同步标签或修正配置文件。",
+      "duration_minutes": 2,
+      "title": "确认当前版本与Git标签一致"
+    },
+    {
+      "description": "根据语义化版本规范（SemVer）决定递增方式。例如，当前正式版 v1.2.0，若为补丁修复则新版本为 v1.2.1；若为功能新增则 v1.3.0；若为不兼容变更则 v2.0.0。对于预发布版，需添加 -alpha、-beta 或 -rc 后缀，如 v1.3.0-alpha.1。",
+      "duration_minutes": 2,
+      "title": "确定新版本号"
+    },
+    {
+      "description": "使用文本编辑器或IDE打开配置文件，找到 version 字段并更新为新值。例如在 pyproject.toml 中将 version = \"1.2.0\" 改为 version = \"1.2.1\"。注意保持格式正确，避免引入多余空格或语法错误。",
+      "duration_minutes": 2,
+      "title": "修改配置文件中的版本字段"
+    },
+    {
+      "description": "再次检查配置文件中的版本字段是否准确，确认无拼写错误。若项目有版本校验脚本（如 python -c \"import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])\" ），可执行验证。最后保存文件并执行 git diff 确认更改。",
+      "duration_minutes": 2,
+      "title": "验证修改并保存"
+    }
+  ],
+  "title": "更新版本号"
+}

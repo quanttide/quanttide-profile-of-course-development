@@ -1,0 +1,27 @@
+{
+  "description": "当 Tag 和 CHANGELOG 已存在但缺少 Release 时，使用 CHANGELOG 内容补建 Release。这是最安全的修复——tag 和 CHANGELOG 都是已确认的事实源。",
+  "duration_minutes": 10,
+  "steps": [
+    {
+      "description": "运行 git tag -l 确认目标 Tag（如 v0.2.0）已存在。打开 CHANGELOG.md 文件，找到对应版本的条目，确保条目清晰完整，例如包含修复、新功能等分类。若条目缺失或不一致，需先与团队确认。",
+      "duration_minutes": 2,
+      "title": "检查 Tag 与 CHANGELOG 一致性"
+    },
+    {
+      "description": "从 CHANGELOG.md 中复制该版本的所有内容（包括标题和条目）。例如，对于 v0.2.0，复制以 \"## [v0.2.0]\" 开头到下一个版本标题之前的所有文字。这些内容将作为 Release 的正文。",
+      "duration_minutes": 2,
+      "title": "提取 Release Notes 内容"
+    },
+    {
+      "description": "在终端执行命令：gh release create v0.2.0 --title v0.2.0 --notes \"<CHANGELOG条目内容>\"。若内容较长，可先写入临时文件，使用 --notes-file 参数。注意替换双引号内的占位符为实际文本。此命令会基于已有 Tag 创建 Release，并填充 release notes。",
+      "duration_minutes": 3,
+      "title": "创建 Release"
+    },
+    {
+      "description": "打开 GitHub 仓库的 Releases 页面（https://github.com/owner/repo/releases），确认新创建的 Release 已显示，检查 tag 名称、标题、内容是否与 CHANGELOG 一致。也可通过命令 gh release view v0.2.0 快速验证。",
+      "duration_minutes": 3,
+      "title": "验证发布结果"
+    }
+  ],
+  "title": "修复缺失的 GitHub Release"
+}

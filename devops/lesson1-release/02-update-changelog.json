@@ -1,0 +1,32 @@
+{
+  "description": "在 CHANGELOG.md 顶部添加当前版本的变更记录，遵循 Keep a Changelog 规范，按 Added、Changed、Fixed、Removed 分类并标注发布日期。",
+  "duration_minutes": 15,
+  "steps": [
+    {
+      "description": "从发布计划或 Git 标签（如 v2.1.0）中获取当前版本号，并确定发布日期（例如 2025-04-01）。如果使用语义化版本，确保版本号正确。",
+      "duration_minutes": 2,
+      "title": "确认版本号和发布日期"
+    },
+    {
+      "description": "在项目根目录下找到 CHANGELOG.md 文件，使用文本编辑器（如 VS Code）打开。确认文件头部包含原有的历史版本记录，为插入新条目准备空间。",
+      "duration_minutes": 1,
+      "title": "打开 CHANGELOG.md 文件"
+    },
+    {
+      "description": "在文件顶部插入以下格式的内容：\n\n## [2.1.0] - 2025-04-01\n\n### Added\n- 新增用户反馈导出功能\n\n### Changed\n- 优化登录页面加载速度\n\n### Fixed\n- 修复搜索框在某些浏览器下的兼容性问题\n\n### Removed\n- 移除旧的统计报告接口\n\n确保在原有内容前空一行，并且每个分类下使用无序列表。",
+      "duration_minutes": 5,
+      "title": "在顶部插入新版本条目"
+    },
+    {
+      "description": "检查新条目是否与已有的历史记录格式一致：版本号是否使用方括号、日期格式是否为 YYYY-MM-DD、分类标题是否加粗并保留空行。同时验证没有遗漏任何变更类别，缩进和标点符号符合规范。",
+      "duration_minutes": 3,
+      "title": "核对格式与一致性"
+    },
+    {
+      "description": "使用 Git 将修改后的 CHANGELOG.md 添加至暂存区（git add CHANGELOG.md），然后提交（git commit -m \"docs: update changelog for v2.1.0\"）。确保 commit message 遵循 Conventional Commits 规范。",
+      "duration_minutes": 4,
+      "title": "提交更改"
+    }
+  ],
+  "title": "更新 CHANGELOG"
+}

@@ -1,0 +1,32 @@
+{
+  "description": "当 Release body 与 Tag 均存在但 CHANGELOG 文件中缺少对应版本的条目时，以 git log 为源，手动整理并补写 CHANGELOG。此过程确保变更记录准确、可追溯，不依赖可能不可靠的 Release body。",
+  "duration_minutes": 15,
+  "steps": [
+    {
+      "description": "使用 git log 命令查看两个相邻 Tag（例如 v0.1.0..v0.2.0）之间的所有 commit 记录，输出一行摘要。例如执行：`git log v0.1.0..v0.2.0 --oneline`，得到类似 `a1b2c3d feat: 添加用户注册功能` 的列表。若有多个版本缺失，需依次获取每对 Tag 的 log。",
+      "duration_minutes": 2,
+      "title": "获取版本间的 git log"
+    },
+    {
+      "description": "将上一步得到的 commit 列表按照约定类型（feat、fix、refactor、docs、chore 等）手动分类。例如将 `feat: 添加用户注册功能` 归入“新特性”，将 `fix: 修复登录页面白屏` 归入“错误修复”。注意合并相同类型的 commit，并删除重复或无关的提交。对于不易分类的 commit，可参考 Git 提交信息中的 `type(scope)` 前缀。",
+      "duration_minutes": 5,
+      "title": "按类型分类整理 commit"
+    },
+    {
+      "description": "打开 Release 页面（如 GitHub Releases），查看已发布的 Release body。例如原文可能写有“新增用户注册、修复登录白屏、优化性能”。参照该列表确认是否遗漏了重要变更，但注意不可直接照搬 Release body 的文本（可能不完整或描述不准确）。若发现 Release body 中提到了某些 commit 但未出现在 git log 中，需核实是否存在额外合并或回滚。",
+      "duration_minutes": 3,
+      "title": "对照 Release body 辅助判断关键变更"
+    },
+    {
+      "description": "在 CHANGELOG.md 文件中找到对应版本号的位置（若版本号不存在则新建标题 `[v0.2.0] - 2025-04-01`）。按照 [Keep a Changelog](https://keepachangelog.com/) 格式写入分类列表，例如：\n\n## [v0.2.0] - 2025-04-01\n### 新特性\n- 添加用户注册功能\n### 错误修复\n- 修复登录页面白屏\n### 其他\n- 优化性能\n\n确保每条变更均引用 Commit 的简短哈希（可选，但推荐）。若存在多个缺失版本，依次完成每个版本的条目。",
+      "duration_minutes": 3,
+      "title": "补写 CHANGELOG 条目并格式化"
+    },
+    {
+      "description": "检查补写后的 CHANGELOG.md 文件格式是否正确：版本号、日期、分类结构对齐，无拼写错误。使用 `git diff` 确认修改内容。随后执行 git add 和 git commit，提交信息可写为 `docs(CHANGELOG): 补写 v0.2.0 版本变更记录`。",
+      "duration_minutes": 2,
+      "title": "验证格式并提交更改"
+    }
+  ],
+  "title": "补写缺失的 CHANGELOG 条目"
+}
