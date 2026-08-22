@@ -1,0 +1,30 @@
+{
+  "title": "生产实习 — 课时1：使用量潮第二大脑",
+  "description": "完成量潮第二大脑（quanttide 根仓库）的一次完整实操：克隆并初始化含子模块的仓库、打开工作区并避开 Git submodule 的常见坑；理解能力轴/领域轴/主体轴三轴架构与领域统一结构（data/ + docs/ + apps/ + packages/ + examples/），按模板初始化一个新的下级第二大脑并接入工作区；最后按『子模块提交→父仓库更新指针』的层级逐级提交并推送。",
+  "scenes": [
+    {
+      "title": "安装与开工作区（Git submodule 的坑）",
+      "description": "克隆量潮第二大脑并初始化其全部子模块：`git clone --recurse-submodules https://github.com/quanttide/quanttide.git`，或先 `git clone` 再 `git submodule update --init --recursive`。用编辑器打开 quanttide 根目录作为工作区。特别注意 Git submodule 的坑：子模块目录可能为空，必须先初始化（`git submodule update --init --recursive`）；子模块被锁定在某个提交而非分支头，需要同步到远端时用 `git submodule update --remote`；子模块内出现的是独立的 `.git` 文件而非 `.git` 目录。",
+      "exception": {
+        "title": "子模块目录为空或内容缺失",
+        "description": "克隆后子模块目录为空很正常，运行 `git submodule update --init --recursive` 递归初始化。若个别子模块仍未拉取，可单独初始化，如 `git submodule update --init assets/quanttide-profile`。更新所有子模块用 `git submodule update --remote`。"
+      }
+    },
+    {
+      "title": "理解信息架构、初始化下级第二大脑与新建工作区",
+      "description": "先理解信息架构：第二大脑分三条正交轴——能力轴 assets/（我怎么运行：工程标准、工作档案、平台资源）、领域轴 domains/（我关心什么：数据工程、课程研发等 34 个领域）、主体轴 default/（我是谁：法人主体档案）。每个第二大脑遵循统一结构：data/（陈述性记忆）+ docs/（程序性记忆）+ apps/ + packages/ + examples/，遵循『信息集中回流、跨域关联可分析』。要初始化一个**下级第二大脑**（新的领域仓库）时，按此统一结构建模板仓库（data/ + docs/ + apps/ + packages/ + examples/），用 `git submodule add <url> domains/<name>` 接入父仓库、写入 .gitmodules，并在 domains/README.md 领域清单登记；此时在编辑器把它作为新**工作区**打开，先建 `index.md` 作为板块入口、按需登记 `_toc.yml`。",
+      "exception": {
+        "title": "新建的第二大脑目录结构与预期不符",
+        "description": "以父仓库 README/AGENTS 与实际 .gitmodules 为准：目录名使用代码实际结构（既有实体才建目录），不用抽象概念。预留目录与占位文件也是有效的架构声明，不要擅自移除。登记时确认子模块路径属于 domains/{name} 一级，而不是塞进 apps/ 或 assets/。"
+      }
+    },
+    {
+      "title": "逐级提交",
+      "description": "遵循『分层提交』：每个子模块是独立仓库，父仓库只追踪引用指针，禁止在父仓库直接改子模块文件，也禁止在子仓库做父仓库的事。先在被修改的子模块仓库内 `git add`、`git commit`、`git push`，再回到父仓库 `git add <子模块路径>` 更新指针并 `git commit`、`git push`。有多层嵌套（如 domain → 子模块 → 再下级）时逐级向外提交，直到最外层。提交信息遵循 `<type>: <subject>`（feat/fix/docs/style/refactor/chore），每次包含完整独立变更。完成后默认推送到远端（主仓库与子模块都推），除非用户明确说只提交不推。",
+      "exception": {
+        "title": "改错了仓库层级或提交后指针未更新",
+        "description": "若在父仓库里改了子模块内容，撤销后到正确层级操作；若子模块提交后父仓库仍显示旧指针，说明没回到父仓库执行 `git add <子模块路径>` 更新引用。提交前先 `git status`、`git diff` 确认只含预期变更；涉及移动/重构文件时先跑格式检查（如 `cargo fmt --check`）再提交，本地与 CI 一致（如 clippy `-D warnings`），做到本地双绿。"
+      }
+    }
+  ]
+}
