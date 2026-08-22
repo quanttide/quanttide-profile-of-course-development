@@ -11,7 +11,7 @@
 ## 课时组织约定
 
 ```
-<course>/                       # 一门课程，如 production-internship / vibe-coding / devops
+<course>/                       # 一门课程，如 production-internship / vibe-coding
 ├── README.md                   # 课程说明（可为占位）
 └── lessonN-<slug>/             # 一个课时，N 为课时序号，slug 为英文短名
     ├── index.md                # 人类可读：场景清单 + 依赖关系
@@ -33,7 +33,6 @@
 | [index.md](index.md) | 以生产实习为中心的课程研发策略（中心 → 输出 → 降级、边界原则） |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 工作流、单源双格式、同步原则 |
 | [README.md](README.md) | 仓库简介、课程蓝图索引 |
-| [devops/](devops/) | DevOps 课程（当前仅占位 README） |
 | [vibe-coding/](vibe-coding/) | 氛围编程课程（课时示例：lesson1-setup、lesson2-feishu） |
 | [production-internship/](production-internship/) | 生产实习课程（课时1 第二大脑、课时2 版本发布） |
 
