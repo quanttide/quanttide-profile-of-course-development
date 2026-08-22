@@ -1,0 +1,62 @@
+# AGENTS.md — 课程开发工作指南
+
+本文档为在 **quanttide-profile-of-course-development**（课程开发档案，即 `data/profile`）中工作的 Agent 与协作者提供指南。它是课程内容的**唯一创作源头**。
+
+## 仓库定位
+
+- **单一创作源头**：课程内容只在 `data/profile` 写一次，不分散到多个仓库。
+- **单源双格式**：Markdown 给人看（`index.md`、场景 `.md`）、JSON 给机器吃（`index.json`、场景 `.json`），平台服务端直接加载 JSON 上架，无需二次录入。
+- **同步原则**：修改 Markdown 后记得同步对应的 JSON。
+
+## 课时组织约定
+
+```
+<course>/                       # 一门课程，如 production-internship / vibe-coding / devops
+├── README.md                   # 课程说明（可为占位）
+└── lessonN-<slug>/             # 一个课时，N 为课时序号，slug 为英文短名
+    ├── index.md                # 人类可读：场景清单 + 依赖关系
+    ├── index.json              # 机器可读：title / description / scenes[{title, description, exception}]
+    ├── 0X-<scene>.json         # 单场景：title / description / steps[{title, description}]
+    └── index.html              # 由场景文件派生的 DAG 视图（生成产物，勿手改结构，只可同步标题字符串）
+```
+
+目录名用**英文小写连字符**（如 `lesson1-second-brain`），与既有 `lesson1-setup`、`lesson2-feishu` 一致。课程名用英文（如 `production-internship`）。
+
+## 课程边界原则（生产实习模型）
+
+**生产实习（`production-internship`）不是"入门课"，也不是"结课项目"，而是一个自包含的两周"微型工作循环"。** 它同时是入职第一课（学会怎么在这做事）和结课交付（必须产出可被评价的成果）。
+
+编排主线是**"输入 → 输出"**：
+
+- **输入方法**（课时序靠前）：先学会怎么记录 / 检索 / 共享公司的知识。代表课时：**使用量潮第二大脑**（`lesson1-second-brain`）——公司知识体系的入口。
+- **输出标准**（课时序靠后）：再学会怎么把一个东西版本化、构建、交付。代表课时：**版本发布**（`lesson2-release`，由原 `devops` 课程迁移而来）。
+
+即 **先输入方法、后输出标准**——知识进，产品出。
+
+### 由此确定的边界规则
+
+1. **按"完整使用回路"划界，而非"领域 / 技术主题"**：内容归类不因它名义上属于哪个领域（如 `devops`），而因它是否在实习生的完整工作循环里被真实使用。
+2. **主线 = 把知识变成可交付的成果**：凡符合这条主线、且在循环中处在合理位置的运作规范，都会被陆续收进生产实习，编号因此是"暂时"的。
+3. **两端已定，中间可延展**：输入端（第二大脑之外的公司信息获取 / 沉淀方法）、中段（需求→设计→开发→验证）、输出端（发布之后的上线、推广、复盘）都是这条回路的可扩展区间。
+4. **领域课程只作占位**：若某领域课程（如 `devops`）当前只有一个课时、撑不起一门课，内容可迁移到实际被消费的场景课程，原课程保留 README 占位。
+
+### 教学对象口径
+
+生产实习面向"以分公司身份进入量潮"的实习生：量潮是总部、你是分公司，**自己给自己出题**，找到公司盲区，做一个微型创业 demo **卖回给总部**。同一套评分、不同分数线（课程 60 分及格、招聘 90 分录用）。所有课时内容都应服务"让这个人能完成这个循环"。
+
+## 关键文档索引
+
+| 文档 | 用途 |
+|------|------|
+| [CONTRIBUTING.md](CONTRIBUTING.md) | 工作流、单源双格式、同步原则 |
+| [README.md](README.md) | 仓库简介、课程蓝图索引 |
+| [devops/](devops/) | DevOps 课程（当前仅占位 README） |
+| [vibe-coding/](vibe-coding/) | 氛围编程课程（课时示例：lesson1-setup、lesson2-feishu） |
+| [production-internship/](production-internship/) | 生产实习课程（课时1 第二大脑、课时2 版本发布） |
+
+## 常见任务速查
+
+- **新增课程**：建英文目录 + `README.md` 占位。
+- **新增课时**：建 `lessonN-<slug>/`，写 `index.md` + `index.json`；如需 DAG 视图再补 `index.html`。
+- **迁移课时**：用 `git mv` 保留历史；若目标课程编号已到，重命名为新序号（如 `lesson1-release` → `lesson2-release`）。
+- **提交**：遵循 [CONTRIBUTING.md](CONTRIBUTING.md)（单源、双格式、同步）；本仓库本身是一个子模块，改完需在子模块内提交并按分层规范（子模块→父仓库→更外层）更新指针并推送。
