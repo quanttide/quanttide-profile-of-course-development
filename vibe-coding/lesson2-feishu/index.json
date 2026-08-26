@@ -1,0 +1,30 @@
+{
+  "description": "通过 AI Agent 安装飞书 CLI，并完成测试任务（如访问最近一周的聊天记录），进入团队协作场景。",
+  "scenes": [
+    {
+      "description": "在 Bing 或百度搜索「飞书CLI」，找到飞书官网；在官网找到「通过AI Agent安装」，复制安装说明粘贴到 Zed Agent，由 Agent 完成安装。",
+      "exception": {
+        "description": "安装失败时检查网络与代理设置（Zed 支持 HTTP 代理）；若官网入口找不到，可在飞书开放平台文档中搜索 CLI 安装指引。",
+        "title": "安装失败"
+      },
+      "title": "安装飞书 CLI"
+    },
+    {
+      "description": "根据安装后的提示完成测试任务，例如通过 lark-cli 访问最近一周的聊天记录，验证 CLI 与账号权限均可用。",
+      "exception": {
+        "description": "提示权限不足时检查账号是否已加入对应租户或获得授权；命令报错时对照 CLI 帮助（lark-cli --help）排查参数。",
+        "title": "验证失败"
+      },
+      "title": "验证 CLI 可用"
+    }
+  ],
+  "acceptance": {
+    "criteria": [
+      "飞书 CLI 安装成功，可正常执行 lark-cli 命令",
+      "通过 lark-cli 完成测试任务，访问最近一周的聊天记录"
+    ],
+    "method": "self-check",
+    "on_fail": "回到对应场景排查（检查网络与代理设置），重试直至通过"
+  },
+  "title": "氛围编程 — 课时2：飞书协作"
+}

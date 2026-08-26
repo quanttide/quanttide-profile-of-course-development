@@ -66,5 +66,13 @@
       "title": "验证连接可用"
     }
   ],
+  "acceptance": {
+    "criteria": [
+      "在 Zed 的 Assistant 面板向 DeepSeek 发送消息并收到模型回复",
+      "API 密钥只保存在本地，未提交到任何公开仓库"
+    ],
+    "method": "self-check",
+    "on_fail": "回到对应场景的异常分支排查；连续两次失败可求助助教"
+  },
   "title": "氛围编程 — 课时1：开发环境搭建"
 }

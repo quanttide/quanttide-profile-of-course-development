@@ -14,8 +14,8 @@
 <course>/                       # 一门课程，如 production-internship / vibe-coding
 ├── README.md                   # 课程说明（可为占位）
 └── lessonN-<slug>/             # 一个课时，N 为课时序号，slug 为英文短名
-    ├── index.md                # 人类可读：场景清单 + 依赖关系
-    ├── index.json              # 机器可读：title / description / scenes[{title, description, exception}]
+    ├── index.md                # 人类可读：场景清单 + 依赖关系 + 验收标准
+    ├── index.json              # 机器可读：title / description / scenes[{title, description, exception}] / acceptance{criteria, method, on_fail}
     ├── 0X-<scene>.json         # 单场景：title / description / steps[{title, description}]
     └── index.html              # 由场景文件派生的 DAG 视图（生成产物，勿手改结构，只可同步标题字符串）
 ```
