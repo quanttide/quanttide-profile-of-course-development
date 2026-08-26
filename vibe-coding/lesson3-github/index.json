@@ -1,16 +1,18 @@
 {
-  "description": "了解文档工程仓库的定位，用三问清单通读文档找出可改进点，整理成结构化建议在 GitHub 提交一个新的 Issue，并跟进讨论、落地修改，完成第一次真实开源协作。",
+  "description": "了解文档工程仓库的定位，fork 后通读文档找出可改进点，提交一个新的 Issue，跟进讨论以 PR 落地修改，再在 fork 中完整演练版本发布，最后见证上游正式发布，完成从 Issue 到 Release 的真实开源协作闭环。",
   "scenes": [
     {
-      "description": "访问 GitHub 仓库 quanttide/bylaw-of-document-engineering，先看 README 了解仓库定位，再通读 format/index.md 文档工程格式章程。阅读时用三问清单记录：①哪些规则你用起来很顺手；②哪些地方让你困惑、觉得不适用或可以更清晰；③你自己写文档时有哪些好习惯值得加进去。范围不局限于章程这一篇——README、示例、缺失的规范都可以。至少记录 3 条候选改进点。",
+      "description": "访问 GitHub 仓库 quanttide/bylaw-of-document-engineering，点击右上角 Fork 按钮复制到自己的账号下——fork 是学员自己的仓库，拥有完整权限。通读 README 与 format/index.md 文档工程格式章程，用三问清单记录：①哪些规则你用起来很顺手；②哪些地方让你困惑、觉得不适用或可以更清晰；③你自己写文档时有哪些好习惯值得加进去。范围不局限于章程这一篇——README、示例、缺失的规范都可以。至少记录 3 条候选改进点。同时了解 GitHub 仓库权限分级：读（贡献者）、写/维护（可打 tag 发 Release）、管理员——发布需要维护权限，这是真实协作的常态。",
+      "duration_minutes": 6,
       "exception": {
-        "description": "网络无法访问 GitHub 时，可用飞书文档版章程阅读，流程一致；觉得找不到问题时，从自己的写作经历出发——你写课程文档、周报、接口说明时踩过的坑就是候选 Issue。",
-        "title": "找不到改进点或无法访问仓库"
+        "description": "网络无法访问 GitHub 时，可用飞书文档版章程阅读，流程一致；fork 失败时确认已登录 GitHub 账号；觉得找不到问题时，从自己的写作经历出发——你写课程文档、周报、接口说明时踩过的坑就是候选 Issue。",
+        "title": "无法访问仓库或找不到改进点"
       },
-      "title": "认识文档工程仓库"
+      "title": "fork 仓库与权限认知"
     },
     {
-      "description": "打开仓库 Issues 页面，先搜索确认没有重复的 Issue，然后点击 New Issue 新建。标题用一句话概括问题（如「xxx 规则缺少示例，容易误用」），正文按「位置—问题—建议—例子」四段式组织：位置（文件与章节）、现状问题（具体场景）、改进建议（一句话方案）、例子（可选示例）。提交后把 Issue 链接记录到本地。",
+      "description": "打开上游仓库 Issues 页面，先搜索确认没有重复的 Issue，然后点击 New Issue 新建。标题用一句话概括问题（如「xxx 规则缺少示例，容易误用」），正文按「位置—问题—建议—例子」四段式组织：位置（文件与章节）、现状问题（具体场景）、改进建议（一句话方案）、例子（可选示例）。提交后把 Issue 链接记录到本地。",
+      "duration_minutes": 5,
       "exception": {
         "description": "找不到 New Issue 按钮：确认已登录 GitHub 账号；提交后想补充内容：在 Issue 评论区追加即可；Issue 被关闭（重复或不适用）：阅读关闭原因，修改内容后重新提交或在原 Issue 下补充评论。",
         "title": "提交 Issue 受阻或被关闭"
@@ -18,13 +20,32 @@
       "title": "提交一个新的 Issue"
     },
     {
-      "description": "持续关注自己 Issue 的讨论，回复维护者或其他人的评论：澄清问题、吸收合理建议、追问不明确处。若达成共识需要修改文档：fork 仓库、创建分支、修改对应文件、提交 PR，并在 PR 描述中用 Fixes #编号 关联自己的 Issue。不会 Git 操作也没关系：在 Issue 中口述修改内容，由维护者协助落地。",
+      "description": "持续关注自己 Issue 的讨论，回复维护者或其他人的评论：澄清问题、吸收合理建议、追问不明确处。若达成共识需要修改文档：在 fork 中新建分支、修改对应文件、推送后向上游提交 PR，并在 PR 描述中用 Fixes #编号 关联自己的 Issue，说明这是外部贡献者提交的改动。",
+      "duration_minutes": 10,
       "exception": {
         "description": "PR 被要求修改：按审阅意见修改后推送更新；PR 被拒绝：记录拒绝原因，转为 Issue 建议或接受结论，都是正常学习产出；讨论长时间无回复：在 Issue 中礼貌提醒维护者。",
         "title": "PR 被拒或讨论停滞"
       },
       "title": "参与讨论并落地修改"
+    },
+    {
+      "description": "在自己的 fork 中完整演练一次版本发布：①修改版本号（按仓库实际配置文件，如 pyproject.toml / pubspec.yaml / package.json）；②在 CHANGELOG.md 顶部添加当前版本变更记录，遵循 Keep a Changelog 规范，按 Added、Changed、Fixed、Removed 分类；③git commit；④打标签（多组件项目带 scope 前缀，如 docs/v0.2.0）；⑤推送 tag 到 fork；⑥用 gh release create 创建 Release 并粘贴 CHANGELOG 内容。fork 是自己的仓库，可以反复演练、试错。",
+      "duration_minutes": 15,
+      "exception": {
+        "description": "版本号不符合 SemVer 规范（缺少 v 前缀或预发布后缀格式错误）：检查后重新修改；CHANGELOG 缺失：用 git log 两个 tag 之间的提交记录手动补写；tag 冲突或漏写 scope 前缀：先删错误 tag（git tag -d + git push --delete origin）再在相同 commit 重建，并清理对应的 Release。",
+        "title": "版本号、CHANGELOG 或 tag 出错"
+      },
+      "title": "在 fork 中演练版本发布"
+    },
+    {
+      "description": "在 PR 中附上建议的版本号与 Release notes，说明由维护者在上游执行正式发布。维护者审核合并 PR 后，在上游仓库执行 git tag、git push origin 对应 tag、gh release create 创建 Release，并在 PR 中回复发布链接。学员看到自己的改动变成真实 Release，理解贡献者（提 PR、练发布）与维护者（审核、发布）的职责分工。",
+      "duration_minutes": 8,
+      "exception": {
+        "description": "上游仓库暂不发布（如正在迭代）：维护者会说明原因，发布时机由维护者决定，这是真实协作的一部分，学员保留演练产出即可；长时间未回复：在 PR 或 Issue 中礼貌提醒。",
+        "title": "上游暂不发布或回复缓慢"
+      },
+      "title": "上游正式发布与闭环"
     }
   ],
-  "title": "氛围编程 — 课时3：提交第一个 GitHub Issue"
+  "title": "氛围编程 — 课时3：GitHub 开源协作"
 }
