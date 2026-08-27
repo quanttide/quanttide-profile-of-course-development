@@ -33,6 +33,7 @@
 | [index.md](index.md) | 以生产实习为中心的课程研发策略（中心 → 输出 → 降级、边界原则） |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 工作流、单源双格式、同步原则 |
 | [README.md](README.md) | 仓库简介、课程蓝图索引 |
+| [data-engineering/](data-engineering/) | 数据工程课程需求与规划 |
 | [vibe-coding/](vibe-coding/) | 氛围编程课程（课时示例：lesson1-setup、lesson2-feishu） |
 | [production-internship/](production-internship/) | 生产实习课程（课时1 第二大脑、课时2 版本发布） |
 
