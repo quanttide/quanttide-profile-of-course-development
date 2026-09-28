@@ -39,9 +39,14 @@
 
 ## 工作流
 
-内容以两种格式产出：Markdown 给人看，JSON 给机器吃，平台服务端直接加载 JSON 上架，无需二次录入。
+内容只在 `data/profile` 写一次，同时产出两种格式：Markdown 给人看，JSON 给机器吃，平台服务端直接加载 JSON 上架，无需二次录入。两种格式的文件一一对应：`index.md` 对应 `index.json`，`0X-<scene>.md` 对应 `0X-<scene>.json`。
 
-提交按分层顺序进行：先在 `data/profile` 内提交并推送，再在父仓库 `quanttide-course` 更新子模块指针。
+一次完整改动的流程如下。
+
+1. 写 Markdown：`index.md` 记录场景清单、依赖关系与验收标准，`0X-<scene>.md` 记录场景脚本。
+2. 同步 JSON：将改动写入对应的 `index.json` 与 `0X-<scene>.json`，保持标题、场景、步骤与验收标准一致。
+3. 提交并推送子模块：在 `data/profile` 内提交改动并推送到远端。
+4. 更新父仓库指针：在 `quanttide-course` 更新子模块指针，提交并推送。
 
 ## 验收标准
 
