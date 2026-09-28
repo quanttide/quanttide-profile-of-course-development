@@ -11,10 +11,10 @@
 ├── README.md                   # 课程说明，可为占位
 └── lessonN-<slug>/             # 课时，N 为课时序号，slug 为英文短名
     ├── index.md                # 场景清单、依赖关系、验收标准
-    ├── index.json              # 机器可读：title / description / scenes[] / acceptance
+    ├── index.json              # 机器可读：title / description / scenes[{title, description, exception}] / acceptance{criteria, method, on_fail}
     ├── 0X-<scene>.md           # 场景脚本，可选
-    ├── 0X-<scene>.json         # 场景数据：title / description / steps[]
-    └── index.html              # 场景 DAG 视图，生成产物
+    ├── 0X-<scene>.json         # 场景数据：title / description / steps[{title, description}]
+    └── index.html              # 场景 DAG 视图，生成产物，勿手改结构
 ```
 
 课程名与课时 slug 均用英文小写连字符。课时序号 `N` 从 1 递增，在所属课程内唯一。
