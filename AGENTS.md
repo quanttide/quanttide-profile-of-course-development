@@ -9,7 +9,7 @@
 ## 关键文档索引
 
 - [index.md](index.md)：以生产实习为中心的课程研发策略（中心 → 输出 → 降级、边界原则）。
-- [CONTRIBUTING.md](CONTRIBUTING.md)：内容结构、基本动作、工作流与验收标准。
+- [CONTRIBUTING.md](CONTRIBUTING.md)：内容结构、基本动作与验收标准。
 - [README.md](README.md)：仓库简介、课程蓝图索引。
 - [software-engineering/](software-engineering/)：软件工程课程（课时1：Zed 开发环境）。
 - [devops-engineering/](devops-engineering/)：DevOps 工程课程（课时1：GitHub 开源协作）。

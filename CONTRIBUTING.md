@@ -1,6 +1,6 @@
 # CONTRIBUTING
 
-本仓库是课程内容的唯一创作源头。本文约定内容的结构、基本动作、工作流与验收标准。
+本仓库是课程内容的唯一创作源头。本文约定内容的结构、基本动作与验收标准。
 
 ## 结构
 
@@ -29,24 +29,17 @@
 
 在课程目录下建 `lessonN-<slug>/`，写 `index.md` 与 `index.json`；需要 DAG 视图时再补 `index.html`。`N` 取课程内的下一个序号。
 
+### 编辑内容
+
+内容只在 `data/profile` 写一次，产出两种格式：Markdown 给人看，JSON 给机器吃，平台服务端直接加载 JSON 上架。修改 `index.md` 或 `0X-<scene>.md` 后，同步更新对应的 `index.json` 或 `0X-<scene>.json`，保持标题、场景、步骤与验收标准一致。
+
 ### 迁移课时
 
 跨课程移动课时用 `git mv` 保留历史，移入后课时序号重置为目标课程内的序号，例如从 `lesson3-github` 移入空课程即为 `lesson1-github`。迁移改变课时所属的课程，重命名只改 slug，两者不要混淆。
 
-### 编辑场景
+### 提交
 
-修改 `index.md` 或 `0X-<scene>.md` 后，同步更新对应的 JSON。
-
-## 工作流
-
-内容只在 `data/profile` 写一次，同时产出两种格式：Markdown 给人看，JSON 给机器吃，平台服务端直接加载 JSON 上架，无需二次录入。两种格式的文件一一对应：`index.md` 对应 `index.json`，`0X-<scene>.md` 对应 `0X-<scene>.json`。
-
-一次完整改动的流程如下。
-
-1. 写 Markdown：`index.md` 记录场景清单、依赖关系与验收标准，`0X-<scene>.md` 记录场景脚本。
-2. 同步 JSON：将改动写入对应的 `index.json` 与 `0X-<scene>.json`，保持标题、场景、步骤与验收标准一致。
-3. 提交并推送子模块：在 `data/profile` 内提交改动并推送到远端。
-4. 更新父仓库指针：在 `quanttide-course` 更新子模块指针，提交并推送。
+先在 `data/profile` 内提交改动并推送到远端，再在 `quanttide-course` 更新子模块指针，提交并推送。
 
 ## 验收标准
 
