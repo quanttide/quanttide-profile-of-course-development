@@ -55,5 +55,5 @@
     "method": "real-world",
     "on_fail": "按审阅意见修改后重新提交；被拒绝时记录原因并转为 Issue 建议"
   },
-  "title": "氛围编程 — 课时3：GitHub 开源协作"
+  "title": "DevOps 工程 — 课时1：GitHub 开源协作"
 }

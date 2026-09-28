@@ -20,7 +20,7 @@
     └── index.html              # 由场景文件派生的 DAG 视图（生成产物，勿手改结构，只可同步标题字符串）
 ```
 
-目录名用**英文小写连字符**（如 `lesson1-second-brain`），与既有 `lesson1-setup`、`lesson2-feishu` 一致。课程名用英文（如 `production-internship`）。
+目录名用**英文小写连字符**（如 `lesson1-second-brain`），与既有 `lesson1-zed`、`lesson1-feishu` 一致。课程名用英文（如 `production-internship`）。
 
 ## 课程研发策略
 
@@ -33,8 +33,11 @@
 | [index.md](index.md) | 以生产实习为中心的课程研发策略（中心 → 输出 → 降级、边界原则） |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 工作流、单源双格式、同步原则 |
 | [README.md](README.md) | 仓库简介、课程蓝图索引 |
+| [software-engineering/](software-engineering/) | 软件工程课程（课时1：Zed 开发环境） |
+| [devops-engineering/](devops-engineering/) | DevOps 工程课程（课时1：GitHub 开源协作） |
+| [communication-management/](communication-management/) | 沟通管理课程（课时1：飞书协作） |
 | [data-engineering/](data-engineering/) | 数据工程课程需求与规划 |
-| [vibe-coding/](vibe-coding/) | 氛围编程课程（课时示例：lesson1-setup、lesson2-feishu） |
+| [vibe-coding/](vibe-coding/) | 氛围编程课程（课时1：WorkBuddy） |
 | [production-internship/](production-internship/) | 生产实习课程（课时1 第二大脑、课时2 版本发布） |
 
 ## 常见任务速查
