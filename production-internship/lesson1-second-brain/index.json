@@ -1,6 +1,6 @@
 {
   "title": "生产实习 — 课时1：使用量潮第二大脑",
-  "description": "完成量潮第二大脑（quanttide 根仓库）的一次完整实操：克隆并初始化含子模块的仓库、打开工作区并避开 Git submodule 的常见坑；理解能力轴/领域轴/主体轴三轴架构与领域统一结构（data/ + docs/ + apps/ + packages/ + examples/），按模板初始化一个新的下级第二大脑并接入工作区；最后按『子模块提交→父仓库更新指针』的层级逐级提交并推送。",
+  "description": "完成量潮第二大脑（quanttide 根仓库）的一次完整实操：克隆并初始化含子模块的仓库、打开工作区并避开 Git submodule 的常见坑；理解范畴轴/领域轴/主体轴三轴架构与领域统一结构（data/ + docs/ + apps/ + packages/ + examples/），按模板初始化一个新的下级第二大脑并接入工作区；最后按『子模块提交→父仓库更新指针』的层级逐级提交并推送。",
   "scenes": [
     {
       "title": "安装与开工作区（Git submodule 的坑）",
