@@ -20,4 +20,6 @@
 - [communication-management/](communication-management/)：沟通管理课程（课时1：飞书协作）。
 - [data-engineering/](data-engineering/)：数据工程课程需求与规划。
 - [vibe-coding/](vibe-coding/)：氛围编程课程（课时1：WorkBuddy）。
+- [vibe-working/](vibe-working/)：氛围工作课程（占位，待补课时）。
+- [vibe-creating/](vibe-creating/)：氛围创作课程（占位，待补课时）。
 - [production-internship/](production-internship/)：生产实习课程（课时1 第二大脑、课时2 版本发布）。
