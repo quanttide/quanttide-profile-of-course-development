@@ -22,5 +22,5 @@
 - [vibe-coding/](vibe-coding/)：氛围编程课程（课时1：WorkBuddy）。
 - [vibe-working/](vibe-working/)：氛围工作课程（占位，待补课时）。
 - [vibe-creating/](vibe-creating/)：氛围创作课程（占位，待补课时）。
-- [vibe-teaching/](vibe-teaching/)：Vibe Teaching 课程（中文名待定，占位，待补课时）。
+- [vibe-teaching/](vibe-teaching/)：氛围教学课程（占位，待补课时）。
 - [production-internship/](production-internship/)：生产实习课程（课时1 第二大脑、课时2 版本发布）。
