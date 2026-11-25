@@ -23,4 +23,5 @@
 - [vibe-working/](vibe-working/)：氛围工作课程（占位，待补课时）。
 - [vibe-creating/](vibe-creating/)：氛围创作课程（占位，待补课时）。
 - [vibe-teaching/](vibe-teaching/)：氛围教学课程（占位，待补课时）。
-- [production-internship/](production-internship/)：生产实习课程（入门任务 [hello-world.html](production-internship/hello-world.html)、课时1 第二大脑、课时2 版本发布）。
+- [career-development/](career-development/)：职业发展课程（入门任务 hello-world.html，生产实习的前置）。
+- [production-internship/](production-internship/)：生产实习课程（课时1 第二大脑、课时2 版本发布）。
