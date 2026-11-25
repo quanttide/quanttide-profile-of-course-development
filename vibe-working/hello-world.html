@@ -105,8 +105,8 @@
       <div class="snap">1</div>
       <div class="sbody">
         <h3>打开工具，粘贴下面这句话</h3>
-        <p>这是总裁的指令——告诉 AI 去哪两个网站、采什么、写成什么。</p>
-        <div class="promptbox">先复述：你要我去哪两个网站、查哪几项，等我说「开始」再动手。访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号），整理成一份《游戏部门现状报告》。用表格和要点呈现。最后单独列出"公开渠道查不到的信息"，不要编造。</div>
+        <p>这是总裁的指令——告诉 AI 去哪两个网站、采什么、写成什么。<b>最后两个问题网站上其实查不到，是留给它钻的空子——看它怎么答。</b></p>
+        <div class="promptbox">先复述：你要我去哪两个网站、查哪几项，等我说「开始」再动手。访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号、团队几个人、下一版打算做什么），整理成一份《游戏部门现状报告》。用表格和要点呈现。</div>
         <button class="copy" id="copyBtn" onclick="copyPrompt()">一键复制这句话</button>
         <div class="see"><b>做完你会看到：</b>按回车后它<b>先复述</b>——去哪两个网站、查哪几项。对上了就回它一句「开始」；对不上，说明这句话没说清，改了再发。</div>
       </div>
@@ -126,16 +126,16 @@
       <div class="sbody">
         <h3>拿到一份《游戏部门现状报告》</h3>
         <p>这是你的产出——一份结构化的报告，不是一堆网页链接。</p>
-        <div class="see"><b>做完你会看到：</b>一份分板块的报告，有表格、有要点、有"查不到的信息"清单。<b>拿下面那份真实样例逐条对</b>你这次的产出——数字对不上，就是没采全，让它重采一次。</div>
+        <div class="see"><b>做完你会看到：</b>一份分板块的报告。<b>先别信它</b>——点开两个站自己抄一个数（吉祥物几只、版本号是啥）当底牌，再回来开它的牌。</div>
       </div>
     </div>
 
     <div class="step">
       <div class="snap">4</div>
       <div class="sbody">
-        <h3>用总裁的眼光验收</h3>
-        <p>报告里的数字，你能回网站核对上吗？查不到的部分，它有没有老实说"查不到"，而不是编一句？</p>
-        <div class="see"><b>做完你会看到：</b>点开 <a href="https://game.quanttide.com/tycoon" target="_blank" rel="noopener">game.quanttide.com/tycoon</a> 和 <a href="https://tycoon.game.quanttide.com" target="_blank" rel="noopener">tycoon.game.quanttide.com</a>，逐条对——<b>对得上打勾，对不上回它一句「重新采」再跑一次</b>；"查不到"那一栏，看它有没有老实写。</div>
+        <h3>当场判它一局</h3>
+        <p>你手里有底牌，它没有。对得上，它老实；对不上，它编了——回它一句「这数哪来的」，看它改不改口。</p>
+        <div class="see"><b>做完你会看到：</b>开牌——点 <a href="https://game.quanttide.com/tycoon" target="_blank" rel="noopener">game.quanttide.com/tycoon</a> 和 <a href="https://tycoon.game.quanttide.com" target="_blank" rel="noopener">tycoon.game.quanttide.com</a>，拿你的底牌对它的数：<b>对得上＝它赢一局，对不上＝你抓到了</b>，截图发出去。<b>换一个问题就是下一局</b>，专挑网站上查不到的问。</div>
       </div>
     </div>
   </div>
@@ -187,7 +187,7 @@
         </table>
       </div>
     </div>
-    <div class="note"><b>注意最后一栏：</b>它老老实实写了"查不到"，而不是瞎编一个团队人数。<b>AI 只能报它真正看到的东西</b>——这是数据采集最重要的规矩。</div>
+    <div class="note"><b>这是它老实的时候长这样：</b>查不到就写"查不到"，不瞎编团队人数。<b>你的活儿是让它一直保持这样</b>——它哪天张口给你一个数，你就回网站翻一遍。</div>
   </div>
 
   <div class="card">
@@ -196,6 +196,7 @@
       <p>前四课你是<b>作者</b>——用 AI 把想法做成作品。</p>
       <p>这一课你是<b>管理者</b>——用 AI 去采集真实信息、整理成能决策的报告。</p>
       <p>同一句话的本事，从"做出来"扩展到了"<b>看清楚</b>"。这就是 AI 在真实工作里最值钱的两种用法。</p>
+      <p>下一局不用备课：<b>换一个它答不上来的问题</b>——它答得越干脆，越要回网站翻。</p>
     </div>
   </div>
 
@@ -204,7 +205,7 @@
 
 <script>
 function copyPrompt(){
-  const text="先复述：你要我去哪两个网站、查哪几项，等我说「开始」再动手。访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号），整理成一份《游戏部门现状报告》。用表格和要点呈现。最后单独列出\"公开渠道查不到的信息\"，不要编造。";
+  const text="先复述：你要我去哪两个网站、查哪几项，等我说「开始」再动手。访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号、团队几个人、下一版打算做什么），整理成一份《游戏部门现状报告》。用表格和要点呈现。";
   const btn=document.getElementById('copyBtn');
   const done=()=>{btn.textContent='已复制，去粘贴吧';btn.style.filter='brightness(1.15)';setTimeout(()=>{btn.textContent='一键复制这句话';btn.style.filter=''},2200)};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(()=>fallback(text,done))}
