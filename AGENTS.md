@@ -33,6 +33,6 @@
 - [vibe-coding/](vibe-coding/)：氛围编程课程（课时1：WorkBuddy）。
 - [vibe-working/](vibe-working/)：氛围工作课程（占位，待补课时）。
 - [vibe-creating/](vibe-creating/)：氛围创作课程（占位，待补课时）。
-- [vibe-teaching/](vibe-teaching/)：氛围教学课程（占位，待补课时）。
+- [course-development/](course-development/)：课程研发课件（原 vibe-teaching，不再单开氛围教学课程）。
 - [career-development/](career-development/)：职业发展课程（入门任务 hello-world.html，生产实习的前置）。
 - [production-internship/](production-internship/)：生产实习课程（课时1 第二大脑、课时2 版本发布）。
