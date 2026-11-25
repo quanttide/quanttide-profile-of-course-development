@@ -68,6 +68,8 @@
   .sum .big{font-size:16px;color:var(--gold);font-weight:800;margin-bottom:8px}
   .sum p{font-size:13.5px;color:#e6edf8;margin-bottom:6px}
   .sum b{color:var(--gold)}
+  a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+  a:hover{color:#9fd0ff}
   .foot{text-align:center;color:#7f93b5;font-size:12px;margin-top:30px;line-height:1.7}
 </style>
 </head>
@@ -104,9 +106,9 @@
       <div class="sbody">
         <h3>打开工具，粘贴下面这句话</h3>
         <p>这是总裁的指令——告诉 AI 去哪两个网站、采什么、写成什么。</p>
-        <div class="promptbox">访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号），整理成一份《游戏部门现状报告》。用表格和要点呈现。最后单独列出"公开渠道查不到的信息"，不要编造。</div>
+        <div class="promptbox">先复述：你要我去哪两个网站、查哪几项，等我说「开始」再动手。访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号），整理成一份《游戏部门现状报告》。用表格和要点呈现。最后单独列出"公开渠道查不到的信息"，不要编造。</div>
         <button class="copy" id="copyBtn" onclick="copyPrompt()">一键复制这句话</button>
-        <div class="see"><b>做完你会看到：</b>输入框里出现上面那段话（不用手打），按回车，看它跑。</div>
+        <div class="see"><b>做完你会看到：</b>按回车后它<b>先复述</b>——去哪两个网站、查哪几项。对上了就回它一句「开始」；对不上，说明这句话没说清，改了再发。</div>
       </div>
     </div>
 
@@ -115,7 +117,7 @@
       <div class="sbody">
         <h3>等 AI 去两个网站采集</h3>
         <p>它会打开网页、读取文字和数字、提取关键信息——就像派了个助理去实地看。</p>
-        <div class="see"><b>做完你会看到：</b>AI 依次读取两个网站，进度从"正在访问"跑到"正在整理"。</div>
+        <div class="see"><b>做完你会看到：</b>它每读完一个站报一句：正在访问 → 正在整理 → 采集完成。<b>哪一句卡住不动，你当场就知道</b>——进度就是反馈，不用等最后。</div>
       </div>
     </div>
 
@@ -124,7 +126,7 @@
       <div class="sbody">
         <h3>拿到一份《游戏部门现状报告》</h3>
         <p>这是你的产出——一份结构化的报告，不是一堆网页链接。</p>
-        <div class="see"><b>做完你会看到：</b>一份分板块的报告，有表格、有要点、有"查不到的信息"清单。下面是一份真实采集的样例。</div>
+        <div class="see"><b>做完你会看到：</b>一份分板块的报告，有表格、有要点、有"查不到的信息"清单。<b>拿下面那份真实样例逐条对</b>你这次的产出——数字对不上，就是没采全，让它重采一次。</div>
       </div>
     </div>
 
@@ -132,8 +134,8 @@
       <div class="snap">4</div>
       <div class="sbody">
         <h3>用总裁的眼光验收</h3>
-        <p>报告里的数字，你能回网站核对上吗？查不到的部分，它有没有老实说"查不到"，而不是编一句?</p>
-        <div class="see"><b>做完你会看到：</b>你能在网站截图里找到报告里写的每个数字——这就是"验收"。</div>
+        <p>报告里的数字，你能回网站核对上吗？查不到的部分，它有没有老实说"查不到"，而不是编一句？</p>
+        <div class="see"><b>做完你会看到：</b>点开 <a href="https://game.quanttide.com/tycoon" target="_blank" rel="noopener">game.quanttide.com/tycoon</a> 和 <a href="https://tycoon.game.quanttide.com" target="_blank" rel="noopener">tycoon.game.quanttide.com</a>，逐条对——<b>对得上打勾，对不上回它一句「重新采」再跑一次</b>；"查不到"那一栏，看它有没有老实写。</div>
       </div>
     </div>
   </div>
@@ -202,7 +204,7 @@
 
 <script>
 function copyPrompt(){
-  const text="访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号），整理成一份《游戏部门现状报告》。用表格和要点呈现。最后单独列出\"公开渠道查不到的信息\"，不要编造。";
+  const text="先复述：你要我去哪两个网站、查哪几项，等我说「开始」再动手。访问 game.quanttide.com/tycoon 和 tycoon.game.quanttide.com，采集游戏部门当前的公开信息（产品是什么、玩法几步、有多少吉祥物、几个周目、当前展示状态、能看到的版本号），整理成一份《游戏部门现状报告》。用表格和要点呈现。最后单独列出\"公开渠道查不到的信息\"，不要编造。";
   const btn=document.getElementById('copyBtn');
   const done=()=>{btn.textContent='已复制，去粘贴吧';btn.style.filter='brightness(1.15)';setTimeout(()=>{btn.textContent='一键复制这句话';btn.style.filter=''},2200)};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(()=>fallback(text,done))}
